@@ -14,7 +14,6 @@ class Login extends Controller
 
 	public function loginUser()
 	{
-
 		try 
 		{
 			$uName = $pWord = "";
@@ -35,54 +34,80 @@ class Login extends Controller
         		$pWord = trim( $_POST['psw'] );
     		}
     
-    		if( "" == $uName || ""==$pWord )
+    		if( "" == $uName || "" == $pWord )
         		throw new CustomException("Enter your username and/or passsword");
+
+            if( isset($_POST['role']))
+                $role = $_POST['role'];
+
+            $user = null;
        
-    		$user = $this->model('User');
+            if( 'Customer' == $role )
+    		  $user = $this->model('Customer');
+
+            else if( 'Admin' == $role )
+                $user = $this->model('Admin');
+
+            if( null == $user )
+                throw new CustomException("Unkown role detected");
+                
     		$user->setDBInstance( $this->getDBInstance() );
 
     		$user->setUserName($uName);
+
     		$user->setPassWord($pWord);
 
-    //$passswordHash = password_hash( $pWord, PASSWORD_DEFAULT );
+            //$passswordHash = password_hash( $pWord, PASSWORD_DEFAULT );
 
-    //var_dump( $passswordHash );
-    
-        	if( $user->verifyPassword ( $pWord ) )
-        	{
-        		$_SESSION['userID'] = $user->getUsername();
-        		$_SESSION['sessionID'] = Person::generateRandomNumber( 20 );
-        		$user->setSessionID( $_SESSION['sessionID'] );
+            //var_dump( $passswordHash );
 
-            	$this->response['dashboard'] = 'Customers';
-            	$this->response['success'] = 'OK';
-            	$this->response['error'] = false;
-           		echo  json_encode( $this->response );
-        	}
-        	else
-        	{
-        		$this->response['success'] = false;
-            	$this->response['error'] = "Unknown User!";
-            	echo json_encode( $this->response );
-        	} 
+            if( ! $user->verifyPassword ( $pWord ) )
+                throw new CustomException( "Unknown User!" );
+        	
+        	$_SESSION['sessionID'] = Person::generateRandomNumber( 20 );
+
+        	$user->setSessionID( $_SESSION['sessionID'] );
+
+            if( $user instanceof Customer )
+            {
+                $_SESSION['customerID'] = $user->getUsername();
+                $this->response['dashboard'] = 'Customers';
+            }
+            else if( $user instanceof Admin )
+            {
+                $_SESSION['adminID'] = $user->getUsername();
+                $this->response['dashboard'] = 'Admins';            	
+            }
+
+        	$this->response['success'] = 'OK';
+
+        	$this->response['error'] = false;
+
+       		echo  json_encode( $this->response );
 		}
 		catch( CustomException $e )
 		{
 			$this->response['success'] = false;
+
             $this->response['error'] = $e->getMessage();
+
             echo json_encode( $this->response );
 		}
 		catch( PDOException $e )
 		{
 			$this->response['success'] = false;
+
             $this->response['error'] = $e->getMessage();
+
             echo json_encode( $this->response );
 		         
 		}
 		catch (Exception $e) 
 		{
 		    $this->response['success'] = false;
+
             $this->response['error'] = $e->getMessage();
+
             echo json_encode( $this->response );
 		}
 	}

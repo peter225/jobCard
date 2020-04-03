@@ -3,15 +3,16 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edmin::Login</title>
+    <title>Edmin :: Admin Login</title>
     <link type="text/css" href="assets/plugins/edmin/code/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link type="text/css" href="assets/plugins/edmin/code/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link type="text/css" href="assets/plugins/edmin/code/css/theme.css" rel="stylesheet">
+    
     <link type="text/css" href="assets/plugins/edmin/code/images/icons/css/font-awesome.css" rel="stylesheet">
+
     <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
 
     <link type="text/css" href='/assets/plugins/toastr/css/toastr.css' rel='stylesheet'>
-
 </head>
 <body>
     <div id="responseBox"></div>
@@ -24,7 +25,7 @@
                 </a>
 
                 <a class="brand" href="index.html">
-                    JobCard Login
+                    JobCard Admin Login
                 </a>
 
                 <div class="nav-collapse collapse navbar-inverse-collapse">
@@ -71,7 +72,7 @@
                         <div class="module-foot">
                             <div class="control-group">
                                 <div class="controls clearfix">
-                                    <button type="button" class="btn btn-primary pull-right" id="login-btn" name="Customer">Login</button>
+                                    <button type="button" class="btn btn-primary pull-right" id="login-btn" name="Admin">Login</button>
                                     <label class="checkbox">
                                         <input type="checkbox"> Remember me
                                     </label>
@@ -101,7 +102,73 @@
     <script src="assets/plugins/toastr/javascript/toastr.min.js" type="text/javascript"></script>
 
     <script type="text/javascript" src="/assets/js/login.js"></script>
+</body>
+
+<!--<form >
+    <label for="userName"><b>Username</b></label>
+
+    <input type="text" name="username" id="username" placeholder=" Enter Username" required class="formStyle">
+    <label for="psw"><b>Password</b></label>
+
+    <input type="password" name="psw" id="psw" placeholder=" Enter Password" required class="formStyle">
+    <br><br>
+   <button class="button" type="button" id="login-btn" name="login-btn">Login</button>
+</form>
+
 
 </body>
 
+<script type="text/javascript">
+
+    var responseBox = document.getElementById('responseBox');
+
+    var submitButton = document.getElementById('login-btn');
+
+    var xhttp = new XMLHttpRequest();
+
+    submitButton.addEventListener( 'click', function(){
+
+        responseBox.innerHTML = '';
+
+        var userName = document.getElementById('username').value;
+        var password = document.getElementById('psw').value;
+
+        submitButton.setAttribute('disabled', true);
+
+        xhttp.onreadystatechange=function(){
+
+            submitButton.setAttribute('disabled', false);
+
+            if(this.readyState==4  && this.status==200 ){
+
+                 handleAjaxResponse( this.responseText );
+            }
+        }
+
+        //xhttp.responseType = 'json';
+
+        xhttp.open("POST", "/Login/loginUser", true);
+
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.setRequestHeader("Accept", "application/json");
+        
+        xhttp.send("username="+userName+"&psw="+password + "&submit-btn=true" );
+    });
+
+    var handleAjaxResponse = function( response ){
+
+        response = JSON.parse( response );
+
+        if( ! response.success )
+        {
+            responseBox.innerHTML = response.error; 
+        }
+        else if( ! response.error && 'OK' === response.success.toUpperCase() )
+        {
+            window.location  = response.dashboard;
+        }
+
+    };
+
+</script>
 </html>

@@ -10,6 +10,7 @@ class Person
 	protected $phoneNumber;
 	protected $gender;
     protected $sessionID;
+    protected $delTable;
 	protected $dob;
 
     public function setDBInstance( PDO $dbInstance )
@@ -113,13 +114,47 @@ class Person
 
     public function setSessionID( $sessionID )
     {
-        $this->sessionID = $sessionID;
+        try
+        {
+            $this->sessionID = $sessionID;
 
-        $sql = 'UPDATE user2 SET session_id = :sessionID WHERE username = :userName';
+            $sql = '';
+
+            if( $this instanceof Customer )
+                $sql = 'UPDATE user SET session_id = :sessionID WHERE username = :userName';
+            else if( $this instanceof Admin )
+                $sql = 'UPDATE admin SET session_id = :sessionID WHERE username = :userName';
+
+            if( '' == $sql )
+                throw new CustomException("Unrecognised role");
+                
+            $stmt = $this->dbInstance->prepare( $sql );
+
+            $stmt->execute( array(':sessionID'=>$this->sessionID, ':userName'=>$this->userName) );
+
+            return ( $stmt->rowCount() == 1 );
+        }
+        catch (PDOException $e) 
+        {
+           throw new PDOException($e->getMessage() );
+        }
+        catch (CustomException $e) 
+        {
+           throw new CustomException( $e->getMessage() );
+        }
+        catch ( Exception $e) 
+        {
+           throw new Exception($e->getMessage() );    
+        }
+    }
+
+    public function resetSessionID()
+    {
+        $sql = 'UPDATE user SET session_id = NULL WHERE username = :userName';
 
         $stmt = $this->dbInstance->prepare( $sql );
 
-        $stmt->execute( array(':sessionID'=>$this->sessionID, ':userName'=>$this->userName) );
+        $stmt->execute( array(':userName'=>$this->userName) );
 
         return ( $stmt->rowCount() == 1 );
     }
@@ -131,23 +166,54 @@ class Person
 
     public function fetchSessionID()
     {
-        $sql = 'SELECT session_id FROM user2 WHERE username = :userName';
+        try
+        {
+            $sql = '';
 
-        $stmt = $this->dbInstance->prepare( $sql );
+            if( $this instanceof Customer )
+                $sql = 'SELECT session_id FROM user WHERE username = :userName';
+            else if( $this instanceof Admin )
+                $sql = 'SELECT session_id FROM admin WHERE username = :userName';
 
-        $stmt->execute( array(':userName'=>$this->userName) );
+            if( '' == $sql )
+                throw new CustomException("Unrecognised role");
+            
+            $stmt = $this->dbInstance->prepare( $sql );
 
-        $row = $stmt->fetch( PDO::FETCH_ASSOC );
+            $stmt->execute( array(':userName'=>$this->userName) );
 
-        return $row['session_id'];
+            $row = $stmt->fetch( PDO::FETCH_ASSOC );
+
+            return $row['session_id'];
+        }
+        catch (PDOException $e) 
+        {
+           throw new PDOException($e->getMessage() );
+        }
+        catch (CustomException $e) 
+        {
+           throw new CustomException( $e->getMessage() );
+        }
+        catch ( Exception $e) 
+        {
+           throw new Exception($e->getMessage() );    
+        }
     }
 
     public function loadProfile()   
     {
         try
         {
-            $sql = 'SELECT * FROM user2 WHERE username = :userName';
+            $sql = '';
 
+            if( $this instanceof Customer )
+                $sql = 'SELECT * FROM user WHERE username = :userName';
+            else if( $this instanceof Admin )
+                $sql = 'SELECT * FROM admin WHERE username = :userName';
+
+            if( '' == $sql )
+                throw new CustomException("Unrecognised role");
+                
             $stmt = $this->dbInstance->prepare( $sql );
 
             $stmt->execute( array(':userName'=>$this->userName ) );
@@ -162,9 +228,63 @@ class Person
             $this->dob = $row['dob'];
 
         }
-        catch( PDOException $e )
+        catch (PDOException $e) 
         {
-            throw new PDOException( $e->getMessage() );
+           throw new PDOException($e->getMessage() );
+             
+        }
+        catch (CustomException $e) 
+        {
+           throw new CustomException( $e->getMessage() );
+             
+        }
+        catch ( Exception $e) 
+        {
+           throw new Exception($e->getMessage() );
+             
+        }
+    }
+    
+    public function verifyPassword( $pWord )
+    {
+        try 
+        {
+            $sql = "";
+
+            if( $this instanceof Customer )
+                $sql = "SELECT password FROM user WHERE username = :userName";
+            else if( $this instanceof Admin )
+                $sql = "SELECT password FROM admin WHERE username = :userName";
+
+            if( "" == $sql )
+                throw new CustomException("Unrecognised role" );
+
+            $stmt = $this->dbInstance->prepare( $sql );
+
+            $stmt->execute( array ( ':userName'=>$this->userName ) );
+
+            $row = $stmt->fetch( PDO::FETCH_ASSOC );
+
+            $passwordHash = $row['password'];
+
+            //throw new CustomException( $passwordHash );
+            
+            return ( password_verify( $pWord, $passwordHash ) );
+        }
+        catch (PDOException $e) 
+        {
+           throw new PDOException($e->getMessage() );
+             
+        }
+        catch (CustomException $e) 
+        {
+           throw new CustomException( $e->getMessage() );
+             
+        }
+        catch ( Exception $e) 
+        {
+           throw new Exception($e->getMessage() );
+             
         }
     }
 

@@ -5,7 +5,7 @@ class Database extends PDO
 	private $servername = "localhost";
 	private $username = "root";
 	private $password = "";
-	private $dbname = 'jobCard';
+	private $dbname = 'jobcard';
 	private $conn;
 	private $dsn;
 

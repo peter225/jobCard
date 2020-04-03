@@ -14,6 +14,7 @@ abstract class Controller
     protected function model( $model )
     {
         require_once 'app/models/' . strtolower( $model ) . '.php';
+        
         return new $model();
     }
     
@@ -33,7 +34,7 @@ abstract class Controller
     }
 
     /**
-     * @author Stephen Adelakun
+     * @author Adeyemo Peter
      * This method cleans up a $user input
      * Notice that this method expects $input to be $value and not an array.
      * If otherwise, use cleanInputs() on an array instead
@@ -55,7 +56,7 @@ abstract class Controller
     }
 
     /**
-     * @author Stephen Adelakun
+     * @author Adeyemo Peter
      * This method cleans up $user inputs
      * Notice that this method expects each element of $inputs to be $value and not an array.
      * If otherwise, use cleanInput() on each element instead

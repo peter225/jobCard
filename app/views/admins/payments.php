@@ -1,9 +1,10 @@
 <?php
 
-$customer = '';
+$admin = '';
 
-if( array_key_exists('customer', $data ) )
-$customer = $data['customer'];
+if( array_key_exists('admin', $data ) )
+
+$admin = $data['admin'];
 
 ?>
 
@@ -12,7 +13,7 @@ $customer = $data['customer'];
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Edmin::Dashboard</title>
+        <title>Edmin:: Admin Dashboard</title>
         <link type="text/css" href="/assets/plugins/edmin/code/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link type="text/css" href="/assets/plugins/edmin/code/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
         <link type="text/css" href="/assets/plugins/edmin/code/css/theme.css" rel="stylesheet">
@@ -25,10 +26,11 @@ $customer = $data['customer'];
             <div class="navbar-inner">
                 <div class="container">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                        <i class="icon-reorder shaded"></i></a><a class="brand" href="index.html">JobCard Customers </a>
+                        <i class="icon-reorder shaded"></i></a><a class="brand" href="#">JobCard Admin Payments</a>
                     <div class="nav-collapse collapse navbar-inverse-collapse">
                         
                                                 <ul class="nav pull-right">
+                            
                             
                             <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="/assets/plugins/edmin/code/images/user.png" class="nav-avatar" />
@@ -55,22 +57,16 @@ $customer = $data['customer'];
                     <div class="span3">
                         <div class="sidebar">
                             <ul class="widget widget-menu unstyled">
-                                <li style="font-weight: bolder;"><a href="#"><i class="menu-icon icon-dashboard"></i>
+                                <li class="active"><a href="#"><i class="menu-icon icon-dashboard"></i>
                                 <?php
-
-                                echo "Welcome";
                                 
-                                if( $customer instanceof Customer && method_exists( $customer, 'getUsername') )
-                                    echo ' ' . $customer->getUsername(); 
-                                    echo "!";
-
+                                echo "Hi" . " " . $admin->getUsername();
 
                                 ?>
-
                                 </a></li>
-                                <li class="active"><a href="#"><i class="menu-icon icon-dashboard"></i>Dashboard
+                                <li ><a href="/admins"><i class="menu-icon icon-dashboard"></i>Dashboard
                                 </a></li>
-                                <li><a href="/Customers/Payments"><i class="menu-icon icon-bullhorn"></i>Payments </a>
+                                <li class="active"><a href="#"><i class="menu-icon icon-bullhorn"></i>Payments </a>
                                 </li>
                                 <li><a href="message.html"><i class="menu-icon icon-inbox"></i>Inbox <b class="label green pull-right">
                                     11</b> </a></li>
@@ -98,7 +94,7 @@ $customer = $data['customer'];
                                         <li><a href="other-user-listing.html"><i class="icon-inbox"></i>All Users </a></li>
                                     </ul>
                                 </li>
-                                <li><a href="/Logout/"><i class="menu-icon icon-signout"></i>Logout </a></li>
+                                <li><a href="/Logout"><i class="menu-icon icon-signout"></i>Logout </a></li>
                             </ul>
                         </div>
                         <!--/.sidebar-->
@@ -216,7 +212,7 @@ $customer = $data['customer'];
                                         DataTables</h3>
                                 </div>
                                 <div class="module-body table">
-                                    <table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display"
+                                    <table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped  display"
                                         width="100%">
                                         <thead>
                                             <tr>
