@@ -24,7 +24,7 @@
                     <i class="icon-reorder shaded"></i>
                 </a>
 
-                <a class="brand" href="index.html">
+                <a class="brand" href="#">
                     JobCard Admin Login
                 </a>
 
@@ -89,11 +89,11 @@
         <div class="container">
              
 
-            <b class="copyright">&copy; 2020 JobCard Computer-ICE.com </b> All rights reserved.
+            <b class="copyright">&copy; 2020 JobCard Computer-ICE Africa.com </b> All rights reserved.
         </div>
     </div>
 
-<script src="assets/plugins/edmin/code/scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/edmin/code/scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 
     <script src="assets/plugins/edmin/code/scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
     
@@ -103,6 +103,7 @@
 
     <script type="text/javascript" src="/assets/js/login.js"></script>
 </body>
+</html>
 
 <!--<form >
     <label for="userName"><b>Username</b></label>

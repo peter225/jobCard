@@ -5,8 +5,336 @@ $admin = '';
 if( array_key_exists('admin', $data ) )
 
 $admin = $data['admin'];
-
 ?>
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>                                               
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AdminLTE 3 | JobCard Admin Dashboard</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="assets/plugins/AdminLTE-master1/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="assets/plugins/AdminLTE-master1/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="assets/plugins/AdminLTE-master1/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="assets/plugins/AdminLTE-master1/plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="assets/plugins/AdminLTE-master1/dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="assets/plugins/AdminLTE-master1/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="assets/plugins/AdminLTE-master1/plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="assets/plugins/AdminLTE-master1/plugins/summernote/summernote-bs4.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-success navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button">
+          <i class="fas fa-bars"></i>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="assets/plugins/AdminLTE-master1/index3.html" class="brand-link">
+      <img src="assets/plugins/AdminLTE-master1/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light">Admin dashboard</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="assets/plugins/AdminLTE-master1/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">
+            <?php
+                                
+                echo  $admin->getFirstName() ." " .  $admin->getLastName();
+
+            ?>
+                                
+          </a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+                <i class="#"></i>
+              </p>
+            </a>
+            
+         
+          <li class="nav-item has-treeview">
+            <a href="/Logout" class="nav-link">
+              <i class="nav-icon fas fa-sign-out-alt"></i>
+              <p>
+                Logout
+                <i class="#"></i>
+              </p>
+            </a>
+            
+          </li>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">JobCard Admin Dashboard</h1>
+          </div><!-- /.col -->
+          
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>150</h3>
+
+                <p>Register Customers</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-user-plus"></i>
+              </div>
+              <a href="/Admins/registerCustomers" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+                <p>Upload job</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-save"></i>
+              </div>
+              <a href="/Admins/task" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>44</h3>
+
+                <p>Add Administrators</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-save"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>65</h3>
+
+                <p>Mail Customers</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-mail-bulk"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>0</h3>
+
+                <p>Update Customer info.</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-shopping-cart"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                More info <i class="fas fa-arrow-circle-right"></i>
+              </a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+                <p>View Customer details</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-user-plus"></i>
+              </div>
+              <a href="/Admins/userList" class="small-box-footer">
+                More info <i class="fas fa-arrow-circle-right"></i>
+              </a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>44</h3>
+
+                <p>View Job Status.</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-street-view"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                More info <i class="fas fa-arrow-circle-right"></i>
+              </a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>65</h3>
+
+                <p>Update Job details.</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-adjust"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                More info <i class="fas fa-arrow-circle-right"></i>
+              </a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+
+        <!-- /.row -->
+        <!-- Main row -->
+        
+            <!-- /.card -->
+          </section>
+          <!-- right col -->
+        </div>
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+ 
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="assets/plugins/AdminLTE-master1/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="assets/plugins/AdminLTE-master1/plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="assets/plugins/AdminLTE-master1/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="assets/plugins/AdminLTE-master1/plugins/chart.js/Chart.min.js"></script>
+
+<script src="assets/plugins/AdminLTE-master1/plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="assets/plugins/AdminLTE-master1/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="assets/plugins/AdminLTE-master1/plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="assets/plugins/AdminLTE-master1/plugins/moment/moment.min.js"></script>
+<script src="assets/plugins/AdminLTE-master1/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="assets/plugins/AdminLTE-master1/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="assets/plugins/AdminLTE-master1/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="assets/plugins/AdminLTE-master1/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="assets/plugins/AdminLTE-master1/dist/js/adminlte.js"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script src="assets/plugins/AdminLTE-master1/dist/js/demo.js"></script>
+</body>
+</html>
+
+
+
+
+<?php
+
+/**$admin = '';
+
+if( array_key_exists('admin', $data ) )
+
+$admin = $data['admin'];
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +343,7 @@ $admin = $data['admin'];
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Edmin:: Admin Dashboard</title>
         <link type="text/css" href="/assets/plugins/edmin/code/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link type="text/css" href="/assets/fontawesome-5.8.1/css/all.css" rel="stylesheet">
         <link type="text/css" href="/assets/plugins/edmin/code/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
         <link type="text/css" href="/assets/plugins/edmin/code/css/theme.css" rel="stylesheet">
         <link type="text/css" href="/assets/plugins/edmin/code/images/icons/css/font-awesome.css" rel="stylesheet">
@@ -30,6 +359,17 @@ $admin = $data['admin'];
                     <div class="nav-collapse collapse navbar-inverse-collapse">
                         
                         <ul class="nav pull-right">
+                            <a class="nav-collapse collapse navbar-inverse-collapse" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                        <i class="nav pull-right"></i></a>
+                        <a class="brand" >
+                            <?php
+                                
+                                echo  $admin->getFirstName() ." " .  $admin->getLastName();
+
+                            ?>
+                                    
+                        </a>
+
                             
                             <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="/assets/plugins/edmin/code/images/user.png" class="nav-avatar" />
@@ -56,31 +396,31 @@ $admin = $data['admin'];
                     <div class="span3">
                         <div class="sidebar">
                             <ul class="widget widget-menu unstyled">
-                                <li><a href="#"><i class="menu-icon icon-dashboard"></i>
+                                <li><a><i class="fas fa-hand-peace"></i>
                                 <?php
                                 
                                 echo "Hi" . " " . $admin->getUsername() . " " . "!";
 
                                 ?>
                                 </a></li>
-                                <li class="active"><a href="#"><i class="menu-icon icon-dashboard"></i>Dashboard
+                                <li class="active"><a href="#"><i class="fas fa-home"> </i>Dashboard
                                 </a></li>
-                                <li><a href="/admins/payments"><i class="menu-icon icon-bullhorn"></i>Payments </a>
+                                <li><a href="/Admins/payments"><i class="fas fa-money-bill"></i>Payments </a>
                                 </li>
-                                <li><a href="message.html"><i class="menu-icon icon-inbox"></i>Inbox <b class="label green pull-right">
+                                <li><a href="#"><i class="menu-icon icon-inbox"></i>Inbox <b class="label green pull-right">
                                     11</b> </a></li>
-                                <li><a href="task.html"><i class="menu-icon icon-tasks"></i>Tasks <b class="label orange pull-right">
+                                <li><a href="/Admins/task"><i class="menu-icon icon-tasks"></i>Tasks <b class="label orange pull-right">
                                     19</b> </a></li>
                             </ul>
                             <!--/.widget-nav-->
                             
                             
                             <ul class="widget widget-menu unstyled">
-                                <li><a href="ui-button-icon.html"><i class="menu-icon icon-bold"></i> Work </a></li>
-                                <li><a href="ui-typography.html"><i class="menu-icon icon-book"></i>Typography </a></li>
-                                <li><a href="form.html"><i class="menu-icon icon-paste"></i>Forms </a></li>
-                                <li><a href="table.html"><i class="menu-icon icon-table"></i>Tables </a></li>
-                                <li><a href="charts.html"><i class="menu-icon icon-bar-chart"></i>Charts </a></li>
+                                <li><a href="#"><i class="menu-icon icon-bold"></i> Work </a></li>
+                                <li><a href="#"><i class="menu-icon icon-book"></i>Typography </a></li>
+                                <li><a href="#"><i class="menu-icon icon-paste"></i>Forms </a></li>
+                                <li><a href="#"><i class="menu-icon icon-table"></i>Tables </a></li>
+                                <li><a href="#"><i class="menu-icon icon-bar-chart"></i>Charts </a></li>
                             </ul>
                             <!--/.widget-nav-->
                             <ul class="widget widget-menu unstyled">
@@ -103,15 +443,16 @@ $admin = $data['admin'];
                         <div class="content">
                             <div class="btn-controls">
                                 <div class="btn-box-row row-fluid">
-                                    <a href="#" class="btn-box big span4"><i class=" icon-paste"></i><b>65%</b>
+                                    <a href="/Admins/userList" class="btn-box big span4 " type="button"><i class=" icon-user"></i><b>15</b>
                                         <p class="text-muted">
-                                            Work Progress</p>
-                                    </a><a href="#" class="btn-box big span4"><i class="icon-money"></i><b>$500</b>
+                                            New Customers.</p>
+                                    </a>
+                                    <a href="/Admins/task" class="btn-box big span4"><i class="menu-icon icon-tasks"></i><b>0 task done</b>
                                         <p class="text-muted">
-                                            Demurrage</p>
-                                    </a><a href="#" class="btn-box big span4"><i class="icon-money"></i><b>15,152</b>
+                                            Tasks</p>
+                                    </a><a href="#" class="btn-box big span4"><i class="fas fa-registered"></i><b>0</b>
                                         <p class="text-muted">
-                                            Profit</p>
+                                            Register Admins</p>
                                     </a>
                                 </div>
                                 <div class="btn-box-row row-fluid">
@@ -176,1056 +517,7 @@ $admin = $data['admin'];
                             <!--/#btn-controls-->
                             <div class="module">
                                 <div class="module-head">
-                                    <!--<h3>
-                                        Profit Chart</h3>
-                                </div>
-                                <div class="module-body">
-                                    <div class="chart inline-legend grid">
-                                        <div id="placeholder2" class="graph" style="height: 500px">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>-->
-                            <!--/.module-->
-                            <!--<div class="module hide">
-                                <div class="module-head">
-                                    <h3>
-                                        Adjust Budget Range</h3>
-                                </div>
-                                <div class="module-body">
-                                    <div class="form-inline clearfix">
-                                        <a href="#" class="btn pull-right">Update</a>
-                                        <label for="amount">
-                                            Price range:</label>
-                                        &nbsp;
-                                        <input type="text" id="amount" class="input-" />
-                                    </div>
-                                    <hr />
-                                    <div class="slider-range">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="module">
-                                <div class="module-head">
-                                    <h3>
-                                        DataTables</h3>
-                                </div>
-                                <div class="module-body table">
-                                    <table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped  display"
-                                        width="100%">
-                                        <thead>
-                                            <tr>
-                                                <th>
-                                                    Rendering engine
-                                                </th>
-                                                <th>
-                                                    Browser
-                                                </th>
-                                                <th>
-                                                    Platform(s)
-                                                </th>
-                                                <th>
-                                                    Engine version
-                                                </th>
-                                                <th>
-                                                    CSS grade
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="odd gradeX">
-                                                <td>
-                                                    Trident
-                                                </td>
-                                                <td>
-                                                    Internet Explorer 4.0
-                                                </td>
-                                                <td>
-                                                    Win 95+
-                                                </td>
-                                                <td class="center">
-                                                    4
-                                                </td>
-                                                <td class="center">
-                                                    X
-                                                </td>
-                                            </tr>
-                                            <tr class="even gradeC">
-                                                <td>
-                                                    Trident
-                                                </td>
-                                                <td>
-                                                    Internet Explorer 5.0
-                                                </td>
-                                                <td>
-                                                    Win 95+
-                                                </td>
-                                                <td class="center">
-                                                    5
-                                                </td>
-                                                <td class="center">
-                                                    C
-                                                </td>
-                                            </tr>
-                                            <tr class="odd gradeA">
-                                                <td>
-                                                    Trident
-                                                </td>
-                                                <td>
-                                                    Internet Explorer 5.5
-                                                </td>
-                                                <td>
-                                                    Win 95+
-                                                </td>
-                                                <td class="center">
-                                                    5.5
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="even gradeA">
-                                                <td>
-                                                    Trident
-                                                </td>
-                                                <td>
-                                                    Internet Explorer 6
-                                                </td>
-                                                <td>
-                                                    Win 98+
-                                                </td>
-                                                <td class="center">
-                                                    6
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="odd gradeA">
-                                                <td>
-                                                    Trident
-                                                </td>
-                                                <td>
-                                                    Internet Explorer 7
-                                                </td>
-                                                <td>
-                                                    Win XP SP2+
-                                                </td>
-                                                <td class="center">
-                                                    7
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="even gradeA">
-                                                <td>
-                                                    Trident
-                                                </td>
-                                                <td>
-                                                    AOL browser (AOL desktop)
-                                                </td>
-                                                <td>
-                                                    Win XP
-                                                </td>
-                                                <td class="center">
-                                                    6
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Gecko
-                                                </td>
-                                                <td>
-                                                    Firefox 1.0
-                                                </td>
-                                                <td>
-                                                    Win 98+ / OSX.2+
-                                                </td>
-                                                <td class="center">
-                                                    1.7
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Gecko
-                                                </td>
-                                                <td>
-                                                    Firefox 1.5
-                                                </td>
-                                                <td>
-                                                    Win 98+ / OSX.2+
-                                                </td>
-                                                <td class="center">
-                                                    1.8
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Gecko
-                                                </td>
-                                                <td>
-                                                    Firefox 2.0
-                                                </td>
-                                                <td>
-                                                    Win 98+ / OSX.2+
-                                                </td>
-                                                <td class="center">
-                                                    1.8
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Gecko
-                                                </td>
-                                                <td>
-                                                    Firefox 3.0
-                                                </td>
-                                                <td>
-                                                    Win 2k+ / OSX.3+
-                                                </td>
-                                                <td class="center">
-                                                    1.9
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Gecko
-                                                </td>
-                                                <td>
-                                                    Camino 1.0
-                                                </td>
-                                                <td>
-                                                    OSX.2+
-                                                </td>
-                                                <td class="center">
-                                                    1.8
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Gecko
-                                                </td>
-                                                <td>
-                                                    Camino 1.5
-                                                </td>
-                                                <td>
-                                                    OSX.3+
-                                                </td>
-                                                <td class="center">
-                                                    1.8
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Gecko
-                                                </td>
-                                                <td>
-                                                    Netscape 7.2
-                                                </td>
-                                                <td>
-                                                    Win 95+ / Mac OS 8.6-9.2
-                                                </td>
-                                                <td class="center">
-                                                    1.7
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Gecko
-                                                </td>
-                                                <td>
-                                                    Netscape Browser 8
-                                                </td>
-                                                <td>
-                                                    Win 98SE+
-                                                </td>
-                                                <td class="center">
-                                                    1.7
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Gecko
-                                                </td>
-                                                <td>
-                                                    Netscape Navigator 9
-                                                </td>
-                                                <td>
-                                                    Win 98+ / OSX.2+
-                                                </td>
-                                                <td class="center">
-                                                    1.8
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Gecko
-                                                </td>
-                                                <td>
-                                                    Mozilla 1.0
-                                                </td>
-                                                <td>
-                                                    Win 95+ / OSX.1+
-                                                </td>
-                                                <td class="center">
-                                                    1
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Gecko
-                                                </td>
-                                                <td>
-                                                    Mozilla 1.1
-                                                </td>
-                                                <td>
-                                                    Win 95+ / OSX.1+
-                                                </td>
-                                                <td class="center">
-                                                    1.1
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Gecko
-                                                </td>
-                                                <td>
-                                                    Mozilla 1.2
-                                                </td>
-                                                <td>
-                                                    Win 95+ / OSX.1+
-                                                </td>
-                                                <td class="center">
-                                                    1.2
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Gecko
-                                                </td>
-                                                <td>
-                                                    Mozilla 1.3
-                                                </td>
-                                                <td>
-                                                    Win 95+ / OSX.1+
-                                                </td>
-                                                <td class="center">
-                                                    1.3
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Gecko
-                                                </td>
-                                                <td>
-                                                    Mozilla 1.4
-                                                </td>
-                                                <td>
-                                                    Win 95+ / OSX.1+
-                                                </td>
-                                                <td class="center">
-                                                    1.4
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Gecko
-                                                </td>
-                                                <td>
-                                                    Mozilla 1.5
-                                                </td>
-                                                <td>
-                                                    Win 95+ / OSX.1+
-                                                </td>
-                                                <td class="center">
-                                                    1.5
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Gecko
-                                                </td>
-                                                <td>
-                                                    Mozilla 1.6
-                                                </td>
-                                                <td>
-                                                    Win 95+ / OSX.1+
-                                                </td>
-                                                <td class="center">
-                                                    1.6
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Gecko
-                                                </td>
-                                                <td>
-                                                    Mozilla 1.7
-                                                </td>
-                                                <td>
-                                                    Win 98+ / OSX.1+
-                                                </td>
-                                                <td class="center">
-                                                    1.7
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Gecko
-                                                </td>
-                                                <td>
-                                                    Mozilla 1.8
-                                                </td>
-                                                <td>
-                                                    Win 98+ / OSX.1+
-                                                </td>
-                                                <td class="center">
-                                                    1.8
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Gecko
-                                                </td>
-                                                <td>
-                                                    Seamonkey 1.1
-                                                </td>
-                                                <td>
-                                                    Win 98+ / OSX.2+
-                                                </td>
-                                                <td class="center">
-                                                    1.8
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Gecko
-                                                </td>
-                                                <td>
-                                                    Epiphany 2.20
-                                                </td>
-                                                <td>
-                                                    Gnome
-                                                </td>
-                                                <td class="center">
-                                                    1.8
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Webkit
-                                                </td>
-                                                <td>
-                                                    Safari 1.2
-                                                </td>
-                                                <td>
-                                                    OSX.3
-                                                </td>
-                                                <td class="center">
-                                                    125.5
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Webkit
-                                                </td>
-                                                <td>
-                                                    Safari 1.3
-                                                </td>
-                                                <td>
-                                                    OSX.3
-                                                </td>
-                                                <td class="center">
-                                                    312.8
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Webkit
-                                                </td>
-                                                <td>
-                                                    Safari 2.0
-                                                </td>
-                                                <td>
-                                                    OSX.4+
-                                                </td>
-                                                <td class="center">
-                                                    419.3
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Webkit
-                                                </td>
-                                                <td>
-                                                    Safari 3.0
-                                                </td>
-                                                <td>
-                                                    OSX.4+
-                                                </td>
-                                                <td class="center">
-                                                    522.1
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Webkit
-                                                </td>
-                                                <td>
-                                                    OmniWeb 5.5
-                                                </td>
-                                                <td>
-                                                    OSX.4+
-                                                </td>
-                                                <td class="center">
-                                                    420
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Webkit
-                                                </td>
-                                                <td>
-                                                    iPod Touch / iPhone
-                                                </td>
-                                                <td>
-                                                    iPod
-                                                </td>
-                                                <td class="center">
-                                                    420.1
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Webkit
-                                                </td>
-                                                <td>
-                                                    S60
-                                                </td>
-                                                <td>
-                                                    S60
-                                                </td>
-                                                <td class="center">
-                                                    413
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Presto
-                                                </td>
-                                                <td>
-                                                    Opera 7.0
-                                                </td>
-                                                <td>
-                                                    Win 95+ / OSX.1+
-                                                </td>
-                                                <td class="center">
-                                                    -
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Presto
-                                                </td>
-                                                <td>
-                                                    Opera 7.5
-                                                </td>
-                                                <td>
-                                                    Win 95+ / OSX.2+
-                                                </td>
-                                                <td class="center">
-                                                    -
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Presto
-                                                </td>
-                                                <td>
-                                                    Opera 8.0
-                                                </td>
-                                                <td>
-                                                    Win 95+ / OSX.2+
-                                                </td>
-                                                <td class="center">
-                                                    -
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Presto
-                                                </td>
-                                                <td>
-                                                    Opera 8.5
-                                                </td>
-                                                <td>
-                                                    Win 95+ / OSX.2+
-                                                </td>
-                                                <td class="center">
-                                                    -
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Presto
-                                                </td>
-                                                <td>
-                                                    Opera 9.0
-                                                </td>
-                                                <td>
-                                                    Win 95+ / OSX.3+
-                                                </td>
-                                                <td class="center">
-                                                    -
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Presto
-                                                </td>
-                                                <td>
-                                                    Opera 9.2
-                                                </td>
-                                                <td>
-                                                    Win 88+ / OSX.3+
-                                                </td>
-                                                <td class="center">
-                                                    -
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Presto
-                                                </td>
-                                                <td>
-                                                    Opera 9.5
-                                                </td>
-                                                <td>
-                                                    Win 88+ / OSX.3+
-                                                </td>
-                                                <td class="center">
-                                                    -
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Presto
-                                                </td>
-                                                <td>
-                                                    Opera for Wii
-                                                </td>
-                                                <td>
-                                                    Wii
-                                                </td>
-                                                <td class="center">
-                                                    -
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Presto
-                                                </td>
-                                                <td>
-                                                    Nokia N800
-                                                </td>
-                                                <td>
-                                                    N800
-                                                </td>
-                                                <td class="center">
-                                                    -
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Presto
-                                                </td>
-                                                <td>
-                                                    Nintendo DS browser
-                                                </td>
-                                                <td>
-                                                    Nintendo DS
-                                                </td>
-                                                <td class="center">
-                                                    8.5
-                                                </td>
-                                                <td class="center">
-                                                    C/A<sup>1</sup>
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeC">
-                                                <td>
-                                                    KHTML
-                                                </td>
-                                                <td>
-                                                    Konqureror 3.1
-                                                </td>
-                                                <td>
-                                                    KDE 3.1
-                                                </td>
-                                                <td class="center">
-                                                    3.1
-                                                </td>
-                                                <td class="center">
-                                                    C
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    KHTML
-                                                </td>
-                                                <td>
-                                                    Konqureror 3.3
-                                                </td>
-                                                <td>
-                                                    KDE 3.3
-                                                </td>
-                                                <td class="center">
-                                                    3.3
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    KHTML
-                                                </td>
-                                                <td>
-                                                    Konqureror 3.5
-                                                </td>
-                                                <td>
-                                                    KDE 3.5
-                                                </td>
-                                                <td class="center">
-                                                    3.5
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeX">
-                                                <td>
-                                                    Tasman
-                                                </td>
-                                                <td>
-                                                    Internet Explorer 4.5
-                                                </td>
-                                                <td>
-                                                    Mac OS 8-9
-                                                </td>
-                                                <td class="center">
-                                                    -
-                                                </td>
-                                                <td class="center">
-                                                    X
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeC">
-                                                <td>
-                                                    Tasman
-                                                </td>
-                                                <td>
-                                                    Internet Explorer 5.1
-                                                </td>
-                                                <td>
-                                                    Mac OS 7.6-9
-                                                </td>
-                                                <td class="center">
-                                                    1
-                                                </td>
-                                                <td class="center">
-                                                    C
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeC">
-                                                <td>
-                                                    Tasman
-                                                </td>
-                                                <td>
-                                                    Internet Explorer 5.2
-                                                </td>
-                                                <td>
-                                                    Mac OS 8-X
-                                                </td>
-                                                <td class="center">
-                                                    1
-                                                </td>
-                                                <td class="center">
-                                                    C
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Misc
-                                                </td>
-                                                <td>
-                                                    NetFront 3.1
-                                                </td>
-                                                <td>
-                                                    Embedded devices
-                                                </td>
-                                                <td class="center">
-                                                    -
-                                                </td>
-                                                <td class="center">
-                                                    C
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeA">
-                                                <td>
-                                                    Misc
-                                                </td>
-                                                <td>
-                                                    NetFront 3.4
-                                                </td>
-                                                <td>
-                                                    Embedded devices
-                                                </td>
-                                                <td class="center">
-                                                    -
-                                                </td>
-                                                <td class="center">
-                                                    A
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeX">
-                                                <td>
-                                                    Misc
-                                                </td>
-                                                <td>
-                                                    Dillo 0.8
-                                                </td>
-                                                <td>
-                                                    Embedded devices
-                                                </td>
-                                                <td class="center">
-                                                    -
-                                                </td>
-                                                <td class="center">
-                                                    X
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeX">
-                                                <td>
-                                                    Misc
-                                                </td>
-                                                <td>
-                                                    Links
-                                                </td>
-                                                <td>
-                                                    Text only
-                                                </td>
-                                                <td class="center">
-                                                    -
-                                                </td>
-                                                <td class="center">
-                                                    X
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeX">
-                                                <td>
-                                                    Misc
-                                                </td>
-                                                <td>
-                                                    Lynx
-                                                </td>
-                                                <td>
-                                                    Text only
-                                                </td>
-                                                <td class="center">
-                                                    -
-                                                </td>
-                                                <td class="center">
-                                                    X
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeC">
-                                                <td>
-                                                    Misc
-                                                </td>
-                                                <td>
-                                                    IE Mobile
-                                                </td>
-                                                <td>
-                                                    Windows Mobile 6
-                                                </td>
-                                                <td class="center">
-                                                    -
-                                                </td>
-                                                <td class="center">
-                                                    C
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeC">
-                                                <td>
-                                                    Misc
-                                                </td>
-                                                <td>
-                                                    PSP browser
-                                                </td>
-                                                <td>
-                                                    PSP
-                                                </td>
-                                                <td class="center">
-                                                    -
-                                                </td>
-                                                <td class="center">
-                                                    C
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeU">
-                                                <td>
-                                                    Other browsers
-                                                </td>
-                                                <td>
-                                                    All others
-                                                </td>
-                                                <td>
-                                                    -
-                                                </td>
-                                                <td class="center">
-                                                    -
-                                                </td>
-                                                <td class="center">
-                                                    U
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>
-                                                    Rendering engine
-                                                </th>
-                                                <th>
-                                                    Browser
-                                                </th>
-                                                <th>
-                                                    Platform(s)
-                                                </th>
-                                                <th>
-                                                    Engine version
-                                                </th>
-                                                <th>
-                                                    CSS grade
-                                                </th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
-                            </div>-->
-                            <!--/.module-->
+                                    
                         </div>
                         <!--/.content-->
                     </div>
@@ -1237,7 +529,8 @@ $admin = $data['admin'];
         <!--/.wrapper-->
         <div class="footer">
             <div class="container">
-                <b class="copyright">&copy; 2020 JobCard - Computer-ICE.com </b>All rights reserved.
+                <b class="copyright">&copy; 2020 JobCard - Computer-ICE Africa.Com </b>All rights reserved.
+
             </div>
         </div>
         <script src="/assets/plugins/edmin/code/scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
@@ -1250,3 +543,4 @@ $admin = $data['admin'];
       
     </body>
 </html>
+?>**/

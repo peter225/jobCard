@@ -1,9 +1,10 @@
 <?php
 
-$key = '';
+$customer = '';
 
-if( array_key_exists('key', $data ) )
-$key = $data['key'];
+if( array_key_exists('customer', $data ) )
+
+$customer = $data['customer'];
 
 ?>
 

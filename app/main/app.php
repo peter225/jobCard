@@ -19,6 +19,7 @@ class App
             if( 'controller' != strtolower( $url[0] ) )
             {
                 $this->controller = $url[0];
+
                 unset( $url[0]);
             }
         }
@@ -32,6 +33,7 @@ class App
             if( method_exists( $this->controller, $url[1] ) )
             {
                 $this->method = $url[1];
+                
                 unset( $url[1] );
             }
         }

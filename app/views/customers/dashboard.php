@@ -3,6 +3,7 @@
 $customer = '';
 
 if( array_key_exists('customer', $data ) )
+
 $customer = $data['customer'];
 
 ?>
@@ -28,7 +29,7 @@ $customer = $data['customer'];
                         <i class="icon-reorder shaded"></i></a><a class="brand" href="index.html">JobCard Customers </a>
                     <div class="nav-collapse collapse navbar-inverse-collapse">
                         
-                                                <ul class="nav pull-right">
+                        <ul class="nav pull-right">
                             
                             <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="/assets/plugins/edmin/code/images/user.png" class="nav-avatar" />
@@ -38,7 +39,7 @@ $customer = $data['customer'];
                                     <li><a href="#">Edit Profile</a></li>
                                     <li><a href="#">Account Settings</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="/Logout">Logout</a></li>
+                                    <li><a name="Customer" href="/Logout">Logout</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -55,22 +56,19 @@ $customer = $data['customer'];
                     <div class="span3">
                         <div class="sidebar">
                             <ul class="widget widget-menu unstyled">
-                                <li style="font-weight: bolder;"><a href="#"><i class="menu-icon icon-dashboard"></i>
+                                <li><a href="#"><i class="menu-icon icon-dashboard"></i>
                                 <?php
 
                                 echo "Welcome";
                                 
                                 if( $customer instanceof Customer && method_exists( $customer, 'getUsername') )
-                                    echo ' ' . $customer->getUsername(); 
-                                    echo "!";
-
-
+                                    echo ' ' . $customer->getUsername() . ' ' . "!"; 
                                 ?>
 
                                 </a></li>
                                 <li class="active"><a href="#"><i class="menu-icon icon-dashboard"></i>Dashboard
                                 </a></li>
-                                <li><a href="/Customers/Payments"><i class="menu-icon icon-bullhorn"></i>Payments </a>
+                                <li><a href="/customers/payments"><i class="menu-icon icon-bullhorn"></i>Payments </a>
                                 </li>
                                 <li><a href="message.html"><i class="menu-icon icon-inbox"></i>Inbox <b class="label green pull-right">
                                     11</b> </a></li>
@@ -81,11 +79,11 @@ $customer = $data['customer'];
                             
                             
                             <ul class="widget widget-menu unstyled">
-                                <li><a href="ui-button-icon.html"><i class="menu-icon icon-bold"></i> Work </a></li>
-                                <li><a href="ui-typography.html"><i class="menu-icon icon-book"></i>Typography </a></li>
-                                <li><a href="form.html"><i class="menu-icon icon-paste"></i>Forms </a></li>
-                                <li><a href="table.html"><i class="menu-icon icon-table"></i>Tables </a></li>
-                                <li><a href="charts.html"><i class="menu-icon icon-bar-chart"></i>Charts </a></li>
+                                <li><a href="#"><i class="menu-icon icon-bold"></i> Work </a></li>
+                                <li><a href="#"><i class="menu-icon icon-book"></i>Typography </a></li>
+                                <li><a href="#"><i class="menu-icon icon-paste"></i>Forms </a></li>
+                                <li><a href="#"><i class="menu-icon icon-table"></i>Tables </a></li>
+                                <li><a href="#"><i class="menu-icon icon-bar-chart"></i>Charts </a></li>
                             </ul>
                             <!--/.widget-nav-->
                             <ul class="widget widget-menu unstyled">
@@ -98,7 +96,7 @@ $customer = $data['customer'];
                                         <li><a href="other-user-listing.html"><i class="icon-inbox"></i>All Users </a></li>
                                     </ul>
                                 </li>
-                                <li><a href="/Logout/"><i class="menu-icon icon-signout"></i>Logout </a></li>
+                                <li><a href="/Logout"><i class="menu-icon icon-signout"></i>Logout </a></li>
                             </ul>
                         </div>
                         <!--/.sidebar-->
@@ -1242,7 +1240,7 @@ $customer = $data['customer'];
         <!--/.wrapper-->
         <div class="footer">
             <div class="container">
-                <b class="copyright">&copy; 2020 JobCard - Computer-ICE.com </b>All rights reserved.
+                <b class="copyright">&copy; 2020 JobCard - Computer-ICE Africa.com </b>All rights reserved.
             </div>
         </div>
         <script src="/assets/plugins/edmin/code/scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
@@ -1252,6 +1250,5 @@ $customer = $data['customer'];
         <script src="/assets/plugins/edmin/code/scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
         <script src="/assets/plugins/edmin/code/scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
         <script src="/assets/plugins/edmin/code/scripts/common.js" type="text/javascript"></script>
-      
     </body>
 </html>

@@ -1,6 +1,8 @@
 <?php
 class Person
 {
+    protected $id;
+    protected $sessionID;
 	protected $userName;
     protected $passWord;
     protected $dbInstance;
@@ -9,7 +11,7 @@ class Person
 	protected $email;
 	protected $phoneNumber;
 	protected $gender;
-    protected $sessionID;
+    protected $address;
     protected $delTable;
 	protected $dob;
 
@@ -25,17 +27,17 @@ class Person
 
     public function setID( $id )
     {
-        $this->ID = $id;
+        $this->id = $id;
     }
 
     public function getID()
     {
-        return $this->ID;
+        return $this->id;
     }
 
     public function setUserName($uName)
     {
-        $this->userName=$uName;
+        $this->userName = $uName;
     }
     
     public function getUserName()
@@ -45,7 +47,7 @@ class Person
     
     public function setPassWord($pWord)
     {
-        $this->passWord=$pWord;
+        $this->passWord = $pWord;
     }
 
     public function getPassWord()
@@ -92,6 +94,15 @@ class Person
     {
     	return $this->phoneNumber;
     }
+    public function setAddress($address)
+    {
+        $this->address=$address;
+    }
+
+    public function getAddress()
+    {
+        return $this->address;
+    }
 
     public function setGender($gender)
     {
@@ -121,7 +132,7 @@ class Person
             $sql = '';
 
             if( $this instanceof Customer )
-                $sql = 'UPDATE user SET session_id = :sessionID WHERE username = :userName';
+                $sql = 'UPDATE customer SET session_id = :sessionID WHERE username = :userName';
             else if( $this instanceof Admin )
                 $sql = 'UPDATE admin SET session_id = :sessionID WHERE username = :userName';
 
@@ -150,7 +161,7 @@ class Person
 
     public function resetSessionID()
     {
-        $sql = 'UPDATE user SET session_id = NULL WHERE username = :userName';
+        $sql = 'UPDATE customer SET session_id = NULL WHERE username = :userName';
 
         $stmt = $this->dbInstance->prepare( $sql );
 
@@ -171,7 +182,7 @@ class Person
             $sql = '';
 
             if( $this instanceof Customer )
-                $sql = 'SELECT session_id FROM user WHERE username = :userName';
+                $sql = 'SELECT session_id FROM customer WHERE username = :userName';
             else if( $this instanceof Admin )
                 $sql = 'SELECT session_id FROM admin WHERE username = :userName';
 
@@ -207,7 +218,7 @@ class Person
             $sql = '';
 
             if( $this instanceof Customer )
-                $sql = 'SELECT * FROM user WHERE username = :userName';
+                $sql = 'SELECT * FROM customer WHERE username = :userName';
             else if( $this instanceof Admin )
                 $sql = 'SELECT * FROM admin WHERE username = :userName';
 
@@ -251,14 +262,17 @@ class Person
         {
             $sql = "";
 
-            if( $this instanceof Customer )
-                $sql = "SELECT password FROM user WHERE username = :userName";
-            else if( $this instanceof Admin )
+            if( $this instanceof Admin )
+
                 $sql = "SELECT password FROM admin WHERE username = :userName";
 
-            if( "" == $sql )
-                throw new CustomException("Unrecognised role" );
+            else if( $this instanceof Customer )
 
+                $sql = "SELECT password FROM customer WHERE username = :userName";
+
+            if( "" == $sql )
+                throw new CustomException( "Unrecognised role" );
+            
             $stmt = $this->dbInstance->prepare( $sql );
 
             $stmt->execute( array ( ':userName'=>$this->userName ) );
@@ -267,9 +281,54 @@ class Person
 
             $passwordHash = $row['password'];
 
+
             //throw new CustomException( $passwordHash );
             
             return ( password_verify( $pWord, $passwordHash ) );
+        }
+        catch (PDOException $e) 
+        {
+           throw new PDOException($e->getMessage() );
+             
+        }
+        catch (CustomException $e) 
+        {
+           throw new CustomException( $e->getMessage() );
+             
+        }
+        catch ( Exception $e) 
+        {
+           throw new Exception($e->getMessage() );
+             
+        }
+        
+    }
+    public function hashPassword($pWord) 
+    {
+        try 
+        {
+            $sql = "";
+
+            if( $this instanceof Admin )
+
+                $sql = "SELECT password FROM admin WHERE username = :userName";
+
+            else if( $this instanceof Customer )
+
+                $sql = "SELECT password FROM customer WHERE username = :userName";
+
+            if( "" == $sql )
+                throw new CustomException( "Unrecognised role" );
+            
+            $stmt = $this->dbInstance->prepare( $sql );
+
+            $stmt->execute( array ( ':userName'=>$this->userName ) );
+
+            $row = $stmt->fetch( PDO::FETCH_ASSOC );
+
+            $passwordHash = $row['password'];
+
+            return password_hash($passwordHash, PASSWORD_DEFAULT);
         }
         catch (PDOException $e) 
         {
@@ -298,5 +357,25 @@ class Person
         }
 
         return $number;
+    }
+
+    public function IDExists( $id )
+    {
+
+        $stmt = $this->dbInstance->prepare( 'SELECT COUNT(customer_id) FROM customer WHERE customer_id = :ID' );
+
+        $stmt->execute( array(':ID'=>$id ) );
+        
+        return ( $stmt->fetchColumn() > 0 );
+    }
+
+    public function sessionIDExists( $sessionID )
+    {
+
+        $stmt = $this->dbInstance->prepare( 'SELECT COUNT(session_id) FROM customer WHERE session_id = :ID' );
+
+        $stmt->execute( array(':ID'=>$sessionID ) );
+        
+        return ( $stmt->fetchColumn() > 0 );
     }
 }

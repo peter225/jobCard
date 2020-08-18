@@ -15,6 +15,7 @@ $admin = $data['admin'];
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Edmin:: Admin Dashboard</title>
         <link type="text/css" href="/assets/plugins/edmin/code/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link type="text/css" href="/assets/fontawesome-5.8.1/css/all.css" rel="stylesheet">
         <link type="text/css" href="/assets/plugins/edmin/code/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
         <link type="text/css" href="/assets/plugins/edmin/code/css/theme.css" rel="stylesheet">
         <link type="text/css" href="/assets/plugins/edmin/code/images/icons/css/font-awesome.css" rel="stylesheet">
@@ -29,7 +30,17 @@ $admin = $data['admin'];
                         <i class="icon-reorder shaded"></i></a><a class="brand" href="#">JobCard Admin Payments</a>
                     <div class="nav-collapse collapse navbar-inverse-collapse">
                         
-                                                <ul class="nav pull-right">
+                       <ul class="nav pull-right">
+                        <a class="nav-collapse collapse navbar-inverse-collapse" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                                <i class="#"></i>
+                            </a>
+                            <a class="brand" >
+                                <?php
+                                
+                                    echo  $admin->getFirstName() ." " .  $admin->getLastName()
+                                ?>
+                                    
+                            </a>                        
                             
                             
                             <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -57,20 +68,20 @@ $admin = $data['admin'];
                     <div class="span3">
                         <div class="sidebar">
                             <ul class="widget widget-menu unstyled">
-                                <li class="active"><a href="#"><i class="menu-icon icon-dashboard"></i>
+                                <li class="active"><a href="#"><i class="fas fa-hand-peace"></i>
                                 <?php
                                 
-                                echo "Hi" . " " . $admin->getUsername();
+                                echo "Hi" . " " . $admin->getUsername() ." " . "!";
 
                                 ?>
                                 </a></li>
-                                <li ><a href="/admins"><i class="menu-icon icon-dashboard"></i>Dashboard
+                                <li ><a href="/Admins"><i class="fas fa-home"></i>Dashboard
                                 </a></li>
-                                <li class="active"><a href="#"><i class="menu-icon icon-bullhorn"></i>Payments </a>
+                                <li class="active"><a href="#"><i class="fas fa-money-bill"></i>Payments </a>
                                 </li>
-                                <li><a href="message.html"><i class="menu-icon icon-inbox"></i>Inbox <b class="label green pull-right">
+                                <li><a href="#"><i class="menu-icon icon-inbox"></i>Inbox <b class="label green pull-right">
                                     11</b> </a></li>
-                                <li><a href="task.html"><i class="menu-icon icon-tasks"></i>Tasks <b class="label orange pull-right">
+                                <li><a href="/Admins/task"><i class="menu-icon icon-tasks"></i>Tasks <b class="label orange pull-right">
                                     19</b> </a></li>
                             </ul>
                             <!--/.widget-nav-->

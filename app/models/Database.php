@@ -6,7 +6,6 @@ class Database extends PDO
 	private $username = "root";
 	private $password = "";
 	private $dbname = 'jobcard';
-	private $conn;
 	private $dsn;
 
 	public function __construct()
@@ -28,5 +27,4 @@ class Database extends PDO
 			throw new PDOException( $e->getMessage() );
 		}
 	}
-	
 }

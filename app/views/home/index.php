@@ -14,8 +14,10 @@
         body
         {
             background-image: url(app/views/home/Graphic2.jpg);
-            background-size: 500px;
+            
             background-position: all;
+            background-size: 1500px;
+            background-repeat: no-repeat;
             border: none;
         }
 

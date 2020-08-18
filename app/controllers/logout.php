@@ -16,11 +16,14 @@ class Logout extends Controller
             if( isset($_SESSION['adminID'] ) )
             {
                 $user = $this->model('Admin');
+
                 $user->setID($_SESSION['adminID']);
             }
+
             else if( isset($_SESSION['customerID'] ) )
             {
                 $user = $this->model('Customer');
+
                 $user->setID($_SESSION['customerID']);
             }
 
@@ -31,10 +34,13 @@ class Logout extends Controller
                 $user->resetSessionID();
             }
 
-            if( $user instanceof Customer )
-                $this->view('login/index');
-            else if( $user instanceof Admin )
+            if( $user instanceof Admin )
+
                 $this->view('login/admin');
+
+            elseif( $user instanceof Customer )
+                
+                $this->view('login/index');
 
             else
                 $this->view('login/index');

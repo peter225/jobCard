@@ -23,8 +23,8 @@
                     <i class="icon-reorder shaded"></i>
                 </a>
 
-                <a class="brand" href="index.html">
-                    JobCard Login
+                <a class="brand" href="#">
+                    JobCard Customer Login
                 </a>
 
                 <div class="nav-collapse collapse navbar-inverse-collapse">
@@ -88,7 +88,7 @@
         <div class="container">
              
 
-            <b class="copyright">&copy; 2020 JobCard Computer-ICE.com </b> All rights reserved.
+            <b class="copyright">&copy; 2020 JobCard Computer-ICE Africa.com </b> All rights reserved.
         </div>
     </div>
 

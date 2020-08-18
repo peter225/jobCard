@@ -16,11 +16,12 @@ class Login extends Controller
 	{
 		try 
 		{
-			$uName = $pWord = "";
+
+			$uName = $pWord = $role = "";
 
     		if( ! isset($_POST['submit-btn']) )
         	throw new CustomException("Ensure to use the login button");
-        
+            
 			if( $_SERVER["REQUEST_METHOD"] != "POST" )
         	throw new CustomException("Error Processing Request", 1);
         
@@ -33,36 +34,42 @@ class Login extends Controller
     		{
         		$pWord = trim( $_POST['psw'] );
     		}
-    
+            
     		if( "" == $uName || "" == $pWord )
         		throw new CustomException("Enter your username and/or passsword");
 
             if( isset($_POST['role']))
+                
                 $role = $_POST['role'];
 
             $user = null;
-       
+            
             if( 'Customer' == $role )
     		  $user = $this->model('Customer');
 
+                
             else if( 'Admin' == $role )
                 $user = $this->model('Admin');
 
             if( null == $user )
                 throw new CustomException("Unkown role detected");
-                
-    		$user->setDBInstance( $this->getDBInstance() );
-
-    		$user->setUserName($uName);
-
-    		$user->setPassWord($pWord);
 
             //$passswordHash = password_hash( $pWord, PASSWORD_DEFAULT );
-
             //var_dump( $passswordHash );
+            //return;
 
-            if( ! $user->verifyPassword ( $pWord ) )
-                throw new CustomException( "Unknown User!" );
+
+            $user->setDBInstance( $this->getDBInstance() );
+
+            $user->setUserName( $uName );
+
+
+            
+
+
+            if( ! $user->verifyPassword ( $pWord) )
+
+                throw new CustomException( "Unkown user" );
         	
         	$_SESSION['sessionID'] = Person::generateRandomNumber( 20 );
 
@@ -70,12 +77,14 @@ class Login extends Controller
 
             if( $user instanceof Customer )
             {
-                $_SESSION['customerID'] = $user->getUsername();
+                $_SESSION['customerID'] = $user->getUserName();
+
                 $this->response['dashboard'] = 'Customers';
             }
             else if( $user instanceof Admin )
             {
-                $_SESSION['adminID'] = $user->getUsername();
+                $_SESSION['adminID'] = $user->getUserName();
+
                 $this->response['dashboard'] = 'Admins';            	
             }
 
@@ -110,5 +119,13 @@ class Login extends Controller
 
             echo json_encode( $this->response );
 		}
+        catch (Error $e) 
+        {
+            $this->response['success'] = false;
+
+            $this->response['error'] = $e->getMessage();
+
+            echo json_encode( $this->response );
+        }
 	}
 }

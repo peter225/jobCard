@@ -55,15 +55,15 @@ class Customers extends Controller
 	{
 		try
 		{
-			if( ! isset( $_SESSION['userID'] ) || ! isset( $_SESSION['sessionID'] ) )
+			if( ! isset( $_SESSION['customerID'] ) || ! isset( $_SESSION['sessionID'] ) )
 			{
 				$this->view('login/index');
 				return;
 			}
 
-			$customer = $this->model('User');
+			$customer = $this->model('customer');
 
-			$customer->setUserName( $_SESSION['userID'] );
+			$customer->setUserName( $_SESSION['customerID'] );
 
 			$customer->setDBInstance( $this->getDBInstance() );
 
@@ -75,7 +75,7 @@ class Customers extends Controller
 				return;
 			}
 
-			$this->view('customers/payments');	
+			$this->view('customers/payments',['customer'=>$customer] );	
 		}
 		catch( PDOException $e )
 		{
