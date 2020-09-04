@@ -42,8 +42,7 @@ class Logout extends Controller
                 
                 $this->view('login/index');
 
-            else
-                $this->view('login/index');
+            
         }
         catch( CustomException $e )
         {

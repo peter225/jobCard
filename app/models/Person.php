@@ -57,7 +57,7 @@ class Person
 
     public function setFirstName($firstName)
     {
-        $this->firstName=$firstName;
+        $this->firstName = $firstName;
     }
 
     public function getFirstName()
@@ -67,7 +67,7 @@ class Person
 
     public function setLastName($lastName)
     {
-        $this->lastName=$lastName;
+        $this->lastName = $lastName;
     }
 
     public function getLastName()
@@ -77,7 +77,7 @@ class Person
 
     public function setEmail($email)
     {
-        $this->email=$email;
+        $this->email = $email;
     }
 
     public function getEmail()
@@ -87,7 +87,7 @@ class Person
 
     public function setPhoneNumber($phoneNumber)
     {
-        $this->phoneNumber=$phoneNumber;
+        $this->phoneNumber = $phoneNumber;
     }
 
     public function getPhoneNumber()
@@ -96,7 +96,7 @@ class Person
     }
     public function setAddress($address)
     {
-        $this->address=$address;
+        $this->address = $address;
     }
 
     public function getAddress()
@@ -106,7 +106,7 @@ class Person
 
     public function setGender($gender)
     {
-        $this->gender=$gender;
+        $this->gender = $gender;
     }
 
     public function getGender()
@@ -116,7 +116,7 @@ class Person
 
     public function setDob($dob)
     {
-        $this->dob=$dob;
+        $this->dob = $dob;
     }
     public function getDob()
     {

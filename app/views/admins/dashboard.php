@@ -98,7 +98,36 @@ $admin = $data['admin'];
                 <i class="#"></i>
               </p>
             </a>
-            
+          </li> 
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-bolt"></i>
+              <p>
+                Tasks
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/Admins/registerCustomers" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Register Customers</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/Admins/task" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Upload Job</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/Admins/userList" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Customer details</p>
+                </a>
+              </li>
+            </ul>
+          </li> 
          
           <li class="nav-item has-treeview">
             <a href="/Logout" class="nav-link">
