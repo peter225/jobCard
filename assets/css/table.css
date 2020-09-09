@@ -1,0 +1,39 @@
+#myTable{
+	font-family: "Arial, Helvetica, Sans-serif";
+	border-collapse: collapse;
+	width: 100%;
+	border-radius: 7px;
+}
+#myTable td, #myTable th {
+    padding: 8px;
+    border-radius: 7px;
+    text-align: center;
+    color: #00FF00;
+}
+
+#myTable tr:nth-child(even) {
+    background-color: #008800;
+}
+
+#myTable tr:nth-child(odd) {
+  background-color: #006400;
+}
+
+#myTable td:hover {
+  background-color: #7cfc00;
+  color: white;
+}
+
+#myTable th {
+    padding-top: 5px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #228b22;
+    border-radius: 7px;
+}
+
+#myTable th:hover {
+   background-color: #7fff00;
+   color: white;
+}
+

@@ -248,7 +248,9 @@ $admin = $data['admin'];
             <!-- small card -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3 class="customerNo" data-cutomerNo>
+                  3
+                </h3>
 
                 <p>View Customer details</p>
               </div>
@@ -328,6 +330,7 @@ $admin = $data['admin'];
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
+
 <!-- Bootstrap 4 -->
 <script src="assets/plugins/AdminLTE-master1/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
@@ -351,6 +354,7 @@ $admin = $data['admin'];
 
 <!-- AdminLTE for demo purposes -->
 <script src="assets/plugins/AdminLTE-master1/dist/js/demo.js"></script>
+<script type="text/javascript" src="assets/js/dashboard.js"></script>
 </body>
 </html>
 
