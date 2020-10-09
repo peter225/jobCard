@@ -51,6 +51,9 @@ class Login extends Controller
             else if( 'Admin' == $role )
                 $user = $this->model('Admin');
 
+            else if( 'superAdmin' == $role )
+                $user = $this->model('superAdmin');
+
             if( null == $user )
                 throw new CustomException("Unkown role detected");
 
@@ -86,6 +89,12 @@ class Login extends Controller
                 $_SESSION['adminID'] = $user->getUserName();
 
                 $this->response['dashboard'] = 'Admins';            	
+            }
+            else if( $user instanceof superAdmin )
+            {
+                $_SESSION['superAdminID'] = $user->getUserName();
+
+                $this->response['dashboard'] = 'superAdmins';                
             }
 
         	$this->response['success'] = 'OK';

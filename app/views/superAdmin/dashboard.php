@@ -1,10 +1,10 @@
 <?php
 
-$admin = '';
+$superAdmin = '';
 
-if( array_key_exists('admin', $data ) )
+if( array_key_exists('superAdmin', $data ) )
 
-$admin = $data['admin'];
+$superAdmin = $data['superAdmin'];
 ?>
 
 
@@ -15,7 +15,7 @@ $admin = $data['admin'];
 <head>                                               
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | JobCard Admin Dashboard</title>
+  <title>AdminLTE 3 | JobCard superAdmin Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -63,7 +63,7 @@ $admin = $data['admin'];
     <a href="#" class="brand-link">
       <img src="assets/plugins/AdminLTE-master1/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">Admin dashboard</span>
+      <span class="brand-text font-weight-light">$admin dashboard</span>
     </a>
 
     <!-- Sidebar -->
@@ -77,7 +77,7 @@ $admin = $data['admin'];
           <a href="#" class="d-block">
             <?php
                                 
-                echo  $admin->getFirstName() ." " .  $admin->getLastName();
+                echo  $superAdmin->getFirstName() ." " .  $superAdmin->getLastName();
 
             ?>
                                 
@@ -109,25 +109,38 @@ $admin = $data['admin'];
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/Admins/registerCustomers" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Register Customers</p>
+                <a href="/superAdmins/registration" class="nav-link">
+                  <i class="fas fa-th nav-icon"></i>
+                  <p>Admin registrations</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/Admins/task" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Upload Job</p>
+                <a href="/superAdmins/jobType" class="nav-link">
+                  <i class="fas fa-th nav-icon"></i>
+                  <p>Select Job Type</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/Admins/userList" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Customer details</p>
+                <a href="/superAdmins/adminsList" class="nav-link">
+                  <i class="fas fa-th nav-icon"></i>
+                  <p>Administrator details</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-th nav-icon"></i>
+                  <p>Engineers</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-th nav-icon"></i>
+                  <p>Accountants</p>
                 </a>
               </li>
             </ul>
-          </li> 
+          </li>
+          
          
           <li class="nav-item has-treeview">
             <a href="/Logout" class="nav-link">
@@ -152,7 +165,7 @@ $admin = $data['admin'];
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">JobCard Admin Dashboard</h1>
+            <h4 class="m-0 text-dark">JobCard superAdmin Dashboard</h4>
           </div><!-- /.col -->
           
         </div><!-- /.row -->
@@ -171,12 +184,12 @@ $admin = $data['admin'];
               <div class="inner">
                 <h3>150</h3>
 
-                <p>Customer Registrations</p>
+                <p>Admin Registrations</p>
               </div>
               <div class="icon">
                 <i class="fas fa-user-plus"></i>
               </div>
-              <a href="/Admins/registerCustomers" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="/superAdmins/registration" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -184,14 +197,14 @@ $admin = $data['admin'];
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3>1</h3>
 
-                <p>Upload job</p>
+                <p>Admins</p>
               </div>
               <div class="icon">
-                <i class="fas fa-save"></i>
+                <i class="fas fa-users"></i>
               </div>
-              <a href="/Admins/task" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="/superAdmins/adminsList" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -201,12 +214,12 @@ $admin = $data['admin'];
               <div class="inner">
                 <h3>44</h3>
 
-                <p>Add Administrators</p>
+                <p>Select Job Type</p>
               </div>
               <div class="icon">
                 <i class="fas fa-save"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="/superAdmins/jobType" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -216,10 +229,10 @@ $admin = $data['admin'];
               <div class="inner">
                 <h3>65</h3>
 
-                <p>Mail Customers</p>
+                <p>Engineers</p>
               </div>
               <div class="icon">
-                <i class="fas fa-mail-bulk"></i>
+                <i class="fas fa-screwdriver"></i>
               </div>
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -233,10 +246,10 @@ $admin = $data['admin'];
               <div class="inner">
                 <h3>0</h3>
 
-                <p>Update Customer info.</p>
+                <p>Set Demmurage</p>
               </div>
               <div class="icon">
-                <i class="fas fa-shopping-cart"></i>
+                <i class="fas fa-money-bill"></i>
               </div>
               <a href="#" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
@@ -251,16 +264,16 @@ $admin = $data['admin'];
                 <h3 class="customerNo" data-cutomerNo id="customerNo">
                   3
                   <?php 
-                      echo $admin->getID();
+                      echo $superAdmin->getID();
                   ?>
                 </h3>
 
-                <p>Customers</p>
+                <p>Accountants</p>
               </div>
               <div class="icon">
                 <i class="fas fa-users"></i>
               </div>
-              <a href="/Admins/userList" class="small-box-footer">
+              <a href="#" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -272,10 +285,10 @@ $admin = $data['admin'];
               <div class="inner">
                 <h3>44</h3>
 
-                <p>View Job Status.</p>
+                <p>Set Job Prices</p>
               </div>
               <div class="icon">
-                <i class="fas fa-street-view"></i>
+                <i class="fas fa-money-bill"></i>
               </div>
               <a href="#" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>

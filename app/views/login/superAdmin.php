@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edmin :: Admin Login</title>
+    <title>Edmin :: superAdmin Login</title>
     <link type="text/css" href="assets/plugins/edmin/code/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link type="text/css" href="assets/plugins/edmin/code/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link type="text/css" href="assets/plugins/edmin/code/css/theme.css" rel="stylesheet">
@@ -25,7 +25,7 @@
                 </a>
 
                 <a class="brand" href="#">
-                    JobCard Admin Login
+                    JobCard Super Admin Login
                 </a>
 
                 <div class="nav-collapse collapse navbar-inverse-collapse">
@@ -72,7 +72,7 @@
                         <div class="module-foot">
                             <div class="control-group">
                                 <div class="controls clearfix">
-                                    <button type="button" class="btn btn-primary pull-right" id="login-btn" name="Admin">Login</button>
+                                    <button type="button" class="btn btn-primary pull-right" id="login-btn" name="superAdmin">Login</button>
                                     <label class="checkbox">
                                         <input type="checkbox"> Remember me
                                     </label>

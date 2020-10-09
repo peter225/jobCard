@@ -2,6 +2,7 @@
 
 class Job 
 {
+    protected $ownerID;
 	protected $jobID;
 	protected $title;
 	protected $deviceDescription;
@@ -32,6 +33,15 @@ class Job
 	{
 		return $this->jobID;
 	}
+    public function setOwnerID( $ownerID )
+    {
+        $this->ownerID = $ownerID;
+    }
+
+    public function getOwnerID()
+    {
+        return $this->ownerID;
+    }
 
     public function setOwnerName($ownerName)
     {
@@ -59,13 +69,13 @@ class Job
         {
              if(isset($_POST['search-btn']))
              {
-                $firstName = trim($_POST['firstname']);
+                $lastName = trim($_POST['lastname']);
 
-                $sql = 'SELECT * FROM customer WHERE firstname =:firstName';
+                $sql = 'SELECT * FROM customer WHERE lastname =:lastName';
 
                 $stmt = $this->dbInstance->prepare($sql);
 
-                $stmt->execute( array(':firstName'=> $firstName) );
+                $stmt->execute( array(':lastName'=> $lastName) );
 
                 $results = $stmt->fetchAll();
 
@@ -163,7 +173,7 @@ class Job
 	public function IDExists( $jobID )
 	{
 
-		$stmt = $this->dbInstance->prepare( 'SELECT COUNT(id) FROM job WHERE id = :ID' );
+		$stmt = $this->dbInstance->prepare( 'SELECT COUNT(id) FROM jobs WHERE id = :ID' );
 
 		$stmt->execute( array(':ID'=>$jobID ) );
         

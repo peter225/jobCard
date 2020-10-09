@@ -38,12 +38,12 @@ var handleAjaxResponse = function( response ){
 
 
 $(document).ready(function(){
-    var enableSearch = function( searchFirstName,callback){
+    var enableSearch = function( searchLastName,callback){
 
         $.ajax({
           type:"POST", 
           url:"/task/enableSearch",
-          data: "firstname=" + searchFirstName +"&search-btn=true",
+          data: "lastname=" + searchLastName +"&search-btn=true",
           dataType:"json",
           encode:true
         })
@@ -62,9 +62,9 @@ $(document).ready(function(){
         })
     };
 
-    var searchFirstNameButton = document.getElementById('searchFirstName-btn');
+    var searchLastNameButton = document.getElementById('searchLastName-btn');
 
-      searchFirstNameButton.addEventListener( 'click', function(){
+      searchLastNameButton.addEventListener( 'click', function(){
 
         var form = $(this).closest('form');
 
@@ -74,9 +74,9 @@ $(document).ready(function(){
 
         $('input[name=owner-name]', form ).data( 'customer-id', '' );
 
-        var searchFirstName = document.getElementById('searchFirstName').value;
+        var searchLastName = document.getElementById('searchLastName').value;
         
-          enableSearch( searchFirstName, function( response ){
+          enableSearch( searchLastName, function( response ){
             console.log(response);
             
             
@@ -110,7 +110,7 @@ $(document).ready(function(){
 
               '<td>' + customer.phone + '</td>' +
 
-              '<td><button type="button" class="btn btn-success apply-btn" data-customer-firstname="' + customer.firstname + '" data-customer-lastname="' + customer.lastname + '" data-customer-phone="' + customer.phone + '">Apply</button></td></tr>';
+              '<td><button type="button" class="btn btn-success apply-btn" data-customer-firstname="' + customer.firstname + '" data-customer-lastname="' + customer.lastname + '" data-customer-phone="' + customer.phone + '" data-customer-id="' + customer.customer_id + '">Apply</button></td></tr>';
 
               });
 
@@ -163,55 +163,53 @@ $(document).ready(function(){
          });
       });
   });
-  var sendJobDetails = function( form, callback )
-  {
+ 
+var sendJobDetails = function(ownerName, ownerPhone, jobTitle, deviceName,deviceDescription,deviceID, fault,customerId, callback ){
+  $.ajax({
+          type:"POST", 
+          url:"/task/createJob",
+          data:"owner-name=" + ownerName + "&owner-phone=" + ownerPhone + "&job-title=" + jobTitle + "&device-name=" + deviceName + "&device-description=" + deviceDescription + "&device-id=" + deviceID + "&fault=" + fault + "&customerId=" + customerId + "&create_job=true",
+          dataType:"json",
+          encode:true
+        })
+        .done( function(response){
 
-      var formData = new FormData(form);
+          callback(response);
 
-      formData.append('create_job', true );
+        })
+        .fail( function(error){
 
-      var xhttp = new XMLHttpRequest();
+          console.log(error);
 
-      xhttp.onreadystatechange = function(){
+        })
+        .always( function(response){
 
-        if( this.readyState==4  && this.status==200 )
-            {
-              callback( this.response );
-            }
-        }
+        })
+};
+$("#create_job").on('click', function(event){
+  
+  var form = $(this).closest('form');
 
-      xhttp.responseType = 'json';
+  var customerId =  $('input[name=owner-name]', form ).data('customer-id');
 
-      xhttp.open("POST", "/task/createJobProfile", true);
+  console.log(customerId);
 
-      xhttp.setRequestHeader("Accept", "application/json");
-              
-      xhttp.send( formData );
-  };
+  sendJobDetails($("#owner-name").val(), $("#owner-phone").val(), $("#job-title").val(), $("#device-name").val(),$("#device-description").val(),$("#device-id").val(),$("#fault").val(), customerId, function(response){
+    
+    if(response.success)
+    {
+      toastr.options = toastrOptions;
 
-  var saveJobButton = document.getElementById('create_job');
+      toastr['success']( response.success.message, response.success.title );
+    }
+    else
+    {
+      toastr.options = toastrOptions;
 
-    saveJobButton.addEventListener( 'click', function(){
-
-      var form = $(this).closest('form');
-
-      var customerId =  $('input[name=owner-name]', form ).data('customer-id');
-
-      console.log(customerId);
-
-      var jobDataForm = document.getElementById('job-data-form');
-
-
-        toastr.options = toastrOptions;
-        
-        toastr['info']('Connecting...please wait', 'Connecting');
-
-        sendJobDetails( jobDataForm, handleAjaxResponse );
-
-    });
-
-
-
+      toastr['error']( response.error.message, response.error.title );
+    }
+  } );
+});
 
    
 

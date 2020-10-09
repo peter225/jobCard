@@ -33,7 +33,7 @@ var handleAjaxResponse = function( response ){
 
           toastr['success'](response.success.message, response.success.title );
 
-          window.location = response.login;
+          
       }
   }
 

@@ -20,12 +20,10 @@ class registerCustomers extends Controller
 			$firstName = $lastName = $email = $userName = $passWord = $phoneNumber = $address = $dob =  "";
 
     		if( ! isset($_POST['register_customer']) )
-
-        	throw new CustomException("Ensure to use the Submit button");
+                throw new CustomException("Ensure to use the Submit button");
         
 			if( $_SERVER["REQUEST_METHOD"] != "POST" )
-                
-        	throw new CustomException("Error Processing Request", 1);
+                throw new CustomException("Error Processing Request", 1);
 
 
             if( isset($_POST['first-name'] ) )

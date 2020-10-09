@@ -1,10 +1,10 @@
 <?php
 
-$admin = '';
+$superAdmin = '';
 
-if( array_key_exists('admin', $data ) )
+if( array_key_exists('superAdmin', $data ) )
 
-$admin = $data['admin'];
+$superAdmin = $data['superAdmin'];
 
 ?>
 
@@ -66,10 +66,10 @@ $admin = $data['admin'];
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/Admins" class="brand-link">
+    <a href="#" class="brand-link">
       <img src="../../assets/plugins/AdminLTE-master1/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">Admin dashboard</span>
+      <span class="brand-text font-weight-light">$admin dashboard</span>
     </a>
 
     <!-- Sidebar -->
@@ -83,7 +83,7 @@ $admin = $data['admin'];
           <a href="#" class="d-block">
             <?php
                                 
-                echo  $admin->getFirstName() ." " .  $admin->getLastName();
+                echo  $superAdmin->getFirstName() ." " .  $superAdmin->getLastName();
 
             ?>
                                 
@@ -97,7 +97,7 @@ $admin = $data['admin'];
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a href="/Admins" class="nav-link ">
+            <a href="/superAdmins" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -114,26 +114,39 @@ $admin = $data['admin'];
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item ">
-                <a href="/Admins/registerCustomers" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Register Customers</p>
+              <li class="nav-item">
+                <a href="#" class="nav-link active">
+                  <i class="fas fa-th nav-icon"></i>
+                  <p>Admin registrations</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link active primary">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Upload Job</p>
+                <a href="#" class="nav-link">
+                  <i class="fas fa-th nav-icon"></i>
+                  <p>Select Job Type</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/Admins/userList" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Customer details</p>
+                <a href="#" class="nav-link">
+                  <i class="fas fa-th nav-icon"></i>
+                  <p>Administrator details</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-th nav-icon"></i>
+                  <p>Engineers</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-th nav-icon"></i>
+                  <p>Accountants</p>
                 </a>
               </li>
             </ul>
-          </li> 
+          </li>
+          
          
           <li class="nav-item has-treeview">
             <a href="/Logout" class="nav-link">
@@ -160,12 +173,12 @@ $admin = $data['admin'];
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Job upload</h1>
+            <h1>Admin Registration</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Task</li>
+              <li class="breadcrumb-item active">Registration</li>
             </ol>
           </div>
         </div>
@@ -185,56 +198,46 @@ $admin = $data['admin'];
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form role="form" id="job-data-form">
+              <form role="form" id="customer-data-form">
                 <div class="card-body">
-
-                    
-                   <label for="basicinput">Search Customer</label> 
-                  
-                  <div class="input-group">
-                    <!--<label for="basicinput">Search Customer</label>-->
-                    
-                    <input type="text" name="lastname" class="form-control" id="searchLastName" placeholder="search customer's last name">
-                    <button type="button" class="btn btn-success btn-flat" id="searchLastName-btn" data-toggle="modal" data-target="#modal-lg" name="searchLastNameBtn"> 
-                      search
-                    </button>
-                    <?php include_once('app/includes/modal.php'); ?>
-                  </div>
-                  
-
                   <div class="form-group">
-                    <label for="basicinput">Owner Name</label>
-                    <input type="text" name="owner-name" class="form-control" id="owner-name" data-customer-id="" readonly>
+                    <label for="basicinput">First name</label>
+                    <input type="text" name="first-name" class="form-control" id="first-name" placeholder="Enter first name">
                   </div>
                   <div class="form-group">
-                    <label for="basicinput">Owner Phone Number</label>
-                    <input type="text" name="owner-phone" class="form-control" id="owner-phone" readonly>
+                    <label for="basicinput">Last name</label>
+                    <input type="text" name="last-name" class="form-control" id="last-name" placeholder="Enter Last name">
                   </div>
                   <div class="form-group">
-                    <label for="basicinput">Job Title</label>
-                    <input type="text" name="job-title" class="form-control" id="job-title" placeholder="Enter Job Title">
+                    <label for="basicinput">Username</label>
+                    <input type="text" name="username" class="form-control" id="username" placeholder="Enter Username ">
                   </div>
                   <div class="form-group">
-                    <label for="basicinput">Device Name</label>
-                    <input type="text" name="device-name" class="form-control" id="device-name" placeholder="Enter device name ">
+                    <label for="basicinput">Email address</label>
+                    <input type="text" name="email" class="form-control" id="email" placeholder="Enter email address">
                   </div>
                   <div class="form-group">
-                    <label for="basicinput">Device Description</label>
-                    <input type="text" name="device-description" class="form-control" id="device-description" placeholder="Enter Device description">
+                    <label for="basicinput">Phone Number</label>
+                    <input type="text" name="phone-number" class="form-control" id="phone-number" placeholder="Enter Phone number">
                   </div>
                   <div class="form-group">
-                    <label for="basicinput">Device ID</label>
-                    <input type="text" name="device-id" class="form-control" id="device-id" placeholder="Enter device id">
+                    <label for="basicinput">Address</label>
+                    <input type="text" name="address" class="form-control" id="address" placeholder="Enter address">
                   </div>
-                  
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Faults/Complaints</label>
-                    <textarea type="date" name="fault" class="form-control" id="fault" placeholder="Enter fault"></textarea>
+                    <label for="exampleInputPassword1">Date of Birth</label>
+                    <input type="date" name="dob" class="form-control" id="dob" placeholder="date of birth">
                   </div>
-                  
+                  <div class="form-group mb-0">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" name="terms" class="custom-control-input" id="exampleCheck1">
+                      <label class="custom-control-label" for="exampleCheck1">I agree to the <a href="#">terms of service</a>.</label>
+                    </div>
+                  </div>
+                </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="button" class="btn btn-primary" id="create_job" name="create_job">Save Job</button>
+                  <button type="button" class="btn btn-primary" id="register_admin">Submit</button>
                 </div>
               </form>
             </div>
@@ -249,7 +252,7 @@ $admin = $data['admin'];
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
-        </section>
+    </section>
   
   
 
@@ -270,7 +273,6 @@ $admin = $data['admin'];
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-
 <script src="../../assets/plugins/AdminLTE-master1/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <script src="../../assets/plugins/AdminLTE-master1/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -281,9 +283,8 @@ $admin = $data['admin'];
 <!-- AdminLTE App -->
 <script src="../../assets/plugins/AdminLTE-master1/dist/js/adminlte.js"></script>
 
-<script type="text/javascript" src="/assets/js/job.js"></script>
 
-
+<script type="text/javascript" src="/assets/js/"></script>
 </body>
 </html>
                                                 

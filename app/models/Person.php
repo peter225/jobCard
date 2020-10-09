@@ -135,6 +135,9 @@ class Person
                 $sql = 'UPDATE customer SET session_id = :sessionID WHERE username = :userName';
             else if( $this instanceof Admin )
                 $sql = 'UPDATE admin SET session_id = :sessionID WHERE username = :userName';
+            else if( $this instanceof superAdmin )
+                $sql = 'UPDATE superadmin SET session_id = :sessionID WHERE username = :userName';
+
 
             if( '' == $sql )
                 throw new CustomException("Unrecognised role");
@@ -161,7 +164,16 @@ class Person
 
     public function resetSessionID()
     {
-        $sql = 'UPDATE customer SET session_id = NULL WHERE username = :userName';
+        $sql = '';
+
+        if( $this instanceof Customer )
+                $sql = 'UPDATE customer SET session_id = NULL WHERE username = :userName';
+        
+        else if( $this instanceof Admin )
+                $sql = 'UPDATE admin SET session_id = NULL WHERE username = :userName';
+
+        else if( $this instanceof superAdmin )
+                $sql = 'UPDATE superadmin SET session_id = NULL WHERE username = :userName';
 
         $stmt = $this->dbInstance->prepare( $sql );
 
@@ -185,6 +197,8 @@ class Person
                 $sql = 'SELECT session_id FROM customer WHERE username = :userName';
             else if( $this instanceof Admin )
                 $sql = 'SELECT session_id FROM admin WHERE username = :userName';
+            else if( $this instanceof superAdmin )
+                $sql = 'SELECT session_id FROM superadmin WHERE username = :userName';
 
             if( '' == $sql )
                 throw new CustomException("Unrecognised role");
@@ -221,6 +235,8 @@ class Person
                 $sql = 'SELECT * FROM customer WHERE username = :userName';
             else if( $this instanceof Admin )
                 $sql = 'SELECT * FROM admin WHERE username = :userName';
+            else if( $this instanceof superAdmin )
+                $sql = 'SELECT * FROM superadmin WHERE username = :userName';
 
             if( '' == $sql )
                 throw new CustomException("Unrecognised role");
@@ -270,6 +286,10 @@ class Person
 
                 $sql = "SELECT password FROM customer WHERE username = :userName";
 
+            else if( $this instanceof superAdmin )
+
+                $sql = "SELECT password FROM superadmin WHERE username = :userName";
+
             if( "" == $sql )
                 throw new CustomException( "Unrecognised role" );
             
@@ -284,7 +304,8 @@ class Person
 
             //throw new CustomException( $passwordHash );
             
-            return ( password_verify( $pWord, $passwordHash ) );
+              
+              return(password_verify($pWord, $passwordHash ));
         }
         catch (PDOException $e) 
         {

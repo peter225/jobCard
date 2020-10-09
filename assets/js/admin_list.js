@@ -16,11 +16,11 @@ $(document).ready(function(){
               "showMethod": "fadeIn",
               "hideMethod": "fadeOut"
             };
-    var showCustomerTable =  function( callback ){
+    var showAdminsTable =  function( callback ){
     $.ajax({
           type:"POST", 
-          url:"/Admins/fetchCustomers",
-          data:"view-customer-btn=true",
+          url:"/superAdmins/fetchAdmins",
+          data:"view-admin-btn=true",
           dataType:"json",
           encode:true,
          })
@@ -34,47 +34,49 @@ $(document).ready(function(){
         })   
    };
 
-   var customerListBtn = document.getElementById('view-customer-btn');
+   var adminListBtn = document.getElementById('view-admin-btn');
 
-   customerListBtn.addEventListener('click', function(){
+   adminListBtn.addEventListener('click', function(){
 
-        showCustomerTable( function(response){
+        showAdminsTable( function(response){
           console.log(response.success.message.length);
           
           if (response.success) {
 
-            var customers = response.success.message;
+            var admins = response.success.message;
 
-            if(customers.length <= 0 )
+            if(admins.length <= 0 )
             {
                 console.log('No customers');
                 return;
             }
 
-            var customersTable = '<table id="" class="table table-bordered table-striped example1">' +
+            var adminsTable = '<table id="" class="table table-bordered table-striped example1">' +
 
             '<thead>' +
 
-            '<tr><th>SN</th><th>First name</th><th>Last name</th><th>Email</th></tr>' + 
+            '<tr><th>SN</th><th>First name</th><th>Last name</th><th>Email</th><th></th></tr>' + 
             '</thead>' +
 
             '<tbody>'; 
 
-            $.each( customers, function(i,customer){
+            $.each( admins, function(i,admin){
 
-              customersTable += '<tr><td>' + (i+1) + '.</td>' +
+              adminsTable += '<tr><td>' + (i+1) + '.</td>' +
 
-              '<td>' + customer.firstname + '</td>' +
+              '<td>' + admin.firstname + '</td>' +
 
-              '<td>' + customer.lastname + '</td>' +
+              '<td>' + admin.lastname + '</td>' +
 
-              '<td>' + customer.email + '</td></tr>';
+              '<td>' + admin.email + '</td>' + 
+
+              '<td><button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Remove </button></td></tr>';
 
             });
 
-            customersTable += '</tbody></table>';
+            adminsTable += '</tbody></table>';
 
-            var customerDetail = '<div>' +
+            var adminDetail = '<div>' +
                     '<div class="row">' +
                       '<div class="col-12">' +
                         '<div class="card">' +
@@ -83,7 +85,7 @@ $(document).ready(function(){
                           '</div>' +
                           '<!-- /.card-header -->' +
                           '<div class="card-body">' +
-                          customersTable +
+                          adminsTable +
                           '</div>' +
                           '<!-- /.card-body -->' +
                         '</div>' +
@@ -92,9 +94,9 @@ $(document).ready(function(){
                     '</div>' +
                   '</div>';
 
-            $('#my-modal').find('h4.modal-title').html('Customer Details');
+            $('#my-modal').find('h4.modal-title').html('Admin Details');
 
-            $('#my-modal').find('div.modal-body').html(customerDetail);
+            $('#my-modal').find('div.modal-body').html(adminDetail);
 
             $('#my-modal').modal("show");
 

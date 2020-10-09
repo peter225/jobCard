@@ -25,7 +25,7 @@ class Task extends Controller
 
             $job->setDBInstance($this->getDBInstance() );
             
-            $admin->setFirstName($admin->getFirstName());
+            $admin->setLastName($admin->getLastName());
 
             $search = $job->search( $admin );
 
@@ -101,20 +101,18 @@ class Task extends Controller
     }
 
 
-	public function createJobProfile()
+	public function createJob()
 	{
 		try 
 		{
 
-			$jobTitle = $deviceName = $deviceDescription = $deviceID = $fault = $role= $ownerName = $ownerPhone =  "";
+			$jobTitle = $deviceName = $deviceDescription = $deviceID = $fault = $role= $ownerName = $ownerPhone = $customerId = "";
 
     		if( ! isset($_POST['create_job']) )
-
-        	throw new CustomException("Ensure to use the Submit button");
+    			throw new CustomException("Ensure to use the Submit button");
         
 			if( $_SERVER["REQUEST_METHOD"] != "POST" )
-                
-        	throw new CustomException("Error Processing Request", 1);
+                throw new CustomException("Error Processing Request", 1);
 
 
             if( isset($_POST['job-title'] ) )
@@ -123,8 +121,7 @@ class Task extends Controller
     		}
     		
             if( '' == $jobTitle )
-
-    			throw new CustomException("enter the job title");
+            	throw new CustomException("enter the job title");
 
     		if(isset($_POST['device-name']))
     		{
@@ -132,8 +129,16 @@ class Task extends Controller
     		}
     		
             if( '' == $deviceName )
+            	throw new CustomException("enter device name");
 
-    			throw new CustomException("enter device name");
+            if(isset($_POST['customerId']))
+    		{
+        		$customerId = trim( $_POST['customerId'] );
+    		}
+    		
+            if( '' == $customerId )
+            	throw new CustomException("customer id not found");
+
 
             if( isset( $_POST['device-description'] ) )
     		{
@@ -187,6 +192,10 @@ class Task extends Controller
             $job = $this->model('Job');    
                         
     		$admin->setDBInstance( $this->getDBInstance() );
+
+    		$job->setOwnerID($customerId);
+
+    		$admin->setID( $admin->getID() );
 
     		$job->setTitle($jobTitle);
 

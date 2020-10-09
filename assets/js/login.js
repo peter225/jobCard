@@ -47,6 +47,7 @@
 
     loginButton.addEventListener( 'click', function(){
 
+
         var role = this.getAttribute('name');
 
         var userName = document.getElementById('username').value;
@@ -58,7 +59,7 @@
 
         //submitButton.setAttribute('disabled', true);
         loginUser( userName, password, role, function( response ){
-
+console.log(response);
           toastr.clear();
 
           if( ! response.success )

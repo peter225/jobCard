@@ -1,4 +1,7 @@
 $(document).ready(function(){
+	
+});
+/**$(document).ready(function(){
 	var updateCustomer = function(callback){
 		$.ajax({
           type:"POST", 
@@ -32,4 +35,4 @@ $(document).ready(function(){
         
 	};
 	
- });
+ });**/

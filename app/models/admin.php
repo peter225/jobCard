@@ -34,6 +34,7 @@ class Admin extends Person
         try
         {
 
+
             $job->setDBInstance( $this->dbInstance );
 
             for(;;)
@@ -49,25 +50,31 @@ class Admin extends Person
 
             }
 
-            $sql = "INSERT INTO job SET id = :ID, 
-                                        job_title = :jobTitle, 
-                                        device_name = :deviceName, 
-                                        device_description = :deviceDescription, 
-                                        device_id = :deviceID, 
-                                        fault = :Fault, 
-                                        owner_name = :ownerName, 
-                                        owner_phone = :ownerPhone";
+            $sql = "INSERT INTO jobs SET  id = :ID, 
+                                          job_title = :jobTitle, 
+                                          device_name = :deviceName, 
+                                          device_description = :deviceDescription, 
+                                          device_id = :deviceID, 
+                                          fault = :Fault, 
+                                          owner_name = :ownerName, 
+                                          owner_phone = :ownerPhone,
+                                          customer_id = :customerId";
             
             $stmt = $this->dbInstance->prepare( $sql );
 
-            $stmt->execute(array(   ':ID'=>$job->getJobID(), 
+            
+            
+
+            $stmt->execute(array(   
+                                    ':ID'=>$job->getJobID(), 
                                     ':jobTitle'=>$job->getTitle(), 
                                     ':deviceName'=>$job->getDeviceName(), 
                                     ':deviceDescription'=>$job->getDeviceDescription(), 
                                     ':deviceID'=>$job->getDeviceID(), 
                                     ':Fault' => $job->getFault(),  
                                     ':ownerName'=>$job->getOwnerName(), 
-                                    ':ownerPhone'=>$job->getOwnerPhone()
+                                    ':ownerPhone'=>$job->getOwnerPhone(),
+                                    ':customerId'=>$job->getOwnerID()
                                 ) 
                             );
 
@@ -168,6 +175,7 @@ class Admin extends Person
                   
         }
     }
+    
     public function fetchCustomers()
     {
         try

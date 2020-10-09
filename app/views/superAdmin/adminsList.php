@@ -1,13 +1,11 @@
 <?php
 
-$admin = '';
+$superAdmin = '';
 
-if( array_key_exists('admin', $data ) )
+if( array_key_exists('superAdmin', $data ) )
 
-$admin = $data['admin'];
-
+$superAdmin = $data['superAdmin'];
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -43,19 +41,7 @@ $admin = $data['admin'];
           </li>
         </ul>
 
-    <!-- SEARCH FORM -->
-    <!--<form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>-->
-
-    <!-- Right navbar links -->
+    
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
       
@@ -72,11 +58,10 @@ $admin = $data['admin'];
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="/Admins" class="brand-link">
+    <a href="#" class="brand-link">
       <img src="../../assets/plugins/AdminLTE-master1/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">Admin dashboard</span>
+      <span class="brand-text font-weight-light">$admin dashboard</span>
     </a>
 
     <!-- Sidebar -->
@@ -90,21 +75,20 @@ $admin = $data['admin'];
           <a href="#" class="d-block">
             <?php
                                 
-                echo  $admin->getFirstName() ." " .  $admin->getLastName();
+                echo  $superAdmin->getFirstName() ." " .  $superAdmin->getLastName();
 
             ?>
                                 
           </a>
         </div>
       </div>
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a href="/Admins" class="nav-link ">
+            <a href="/superAdmins" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -121,26 +105,39 @@ $admin = $data['admin'];
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item ">
-                <a href="/Admins/registerCustomers" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Register Customers</p>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-th nav-icon"></i>
+                  <p>Admin registrations</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/Admins/task" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Upload Job</p>
+                <a href="/superAdmins/jobType" class="nav-link">
+                  <i class="fas fa-th nav-icon"></i>
+                  <p>Select Job Type</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Customer details</p>
+                  <i class="fas fa-th nav-icon"></i>
+                  <p>Administrator details</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-th nav-icon"></i>
+                  <p>Engineers</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-th nav-icon"></i>
+                  <p>Accountants</p>
                 </a>
               </li>
             </ul>
-          </li> 
+          </li>
+          
          
           <li class="nav-item has-treeview">
             <a href="/Logout" class="nav-link">
@@ -165,7 +162,7 @@ $admin = $data['admin'];
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">JobCard Admin Dashboard</h1>
+            <h3 class="m-0 text-dark">JobCard Super Admin Dashboard</h3>
           </div><!-- /.col -->
           
         </div><!-- /.row -->
@@ -177,8 +174,8 @@ $admin = $data['admin'];
         <section class="content">
             <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-lg"  id="view-customer-btn">
-                      Check Customer List
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-lg"  id="view-admin-btn">
+                      Check Admin List
                 </button>
           
           <?php include_once('app/includes/modal.php'); ?>
@@ -218,7 +215,7 @@ $admin = $data['admin'];
 <script src="../../assets/plugins/AdminLTE-master1/plugins/moment/moment.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../assets/plugins/AdminLTE-master1/dist/js/adminlte.js"></script>
-<script type="text/javascript" src="/assets/js/user_list.js"></script>
+<script type="text/javascript" src="/assets/js/admin_list.js"></script>
 </body>
 </html>
                                                 

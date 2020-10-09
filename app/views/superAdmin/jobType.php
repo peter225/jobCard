@@ -1,12 +1,12 @@
 <?php
 
-$admin = '';
+$superAdmin = '';
 
-if( array_key_exists('admin', $data ) )
+if( array_key_exists('superAdmin', $data ) )
 
-$admin = $data['admin'];
-
+$superAdmin = $data['superAdmin'];
 ?>
+
 
 
 <!DOCTYPE html>
@@ -36,6 +36,7 @@ $admin = $data['admin'];
   <link rel="stylesheet" href="../../assets/plugins/AdminLTE-master1/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="../../assets/plugins/AdminLTE-master1/plugins/summernote/summernote-bs4.css">
+  <link rel="stylesheet" href="../../assets/plugins/AdminLTE-master1/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
 
   <link rel="stylesheet" href="../../assets/css/table.css">
   <!-- Google Font: Source Sans Pro -->
@@ -57,8 +58,8 @@ $admin = $data['admin'];
           <i class="fas fa-bars"></i>
         </a>
       </li>
+      
     </ul>
-    <!-- Right navbar links -->
     
   </nav>
   <!-- /.navbar -->
@@ -66,10 +67,10 @@ $admin = $data['admin'];
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/Admins" class="brand-link">
+    <a href="#" class="brand-link">
       <img src="../../assets/plugins/AdminLTE-master1/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">Admin dashboard</span>
+      <span class="brand-text font-weight-light">$admin dashboard</span>
     </a>
 
     <!-- Sidebar -->
@@ -83,7 +84,7 @@ $admin = $data['admin'];
           <a href="#" class="d-block">
             <?php
                                 
-                echo  $admin->getFirstName() ." " .  $admin->getLastName();
+                echo  $superAdmin->getFirstName() ." " .  $superAdmin->getLastName();
 
             ?>
                                 
@@ -97,7 +98,7 @@ $admin = $data['admin'];
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a href="/Admins" class="nav-link ">
+            <a href="/superAdmins" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -114,26 +115,39 @@ $admin = $data['admin'];
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item ">
-                <a href="/Admins/registerCustomers" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Register Customers</p>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-th nav-icon"></i>
+                  <p>Admin registrations</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link active primary">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Upload Job</p>
+                <a href="#" class="nav-link active">
+                  <i class="fas fa-th nav-icon"></i>
+                  <p>Select Job Type</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/Admins/userList" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Customer details</p>
+                <a href="#" class="nav-link">
+                  <i class="fas fa-th nav-icon"></i>
+                  <p>Administrator details</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-th nav-icon"></i>
+                  <p>Engineers</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-th nav-icon"></i>
+                  <p>Accountants</p>
                 </a>
               </li>
             </ul>
-          </li> 
+          </li>
+          
          
           <li class="nav-item has-treeview">
             <a href="/Logout" class="nav-link">
@@ -153,14 +167,14 @@ $admin = $data['admin'];
 
  
     <!-- Main content -->
-        <section class="content">
-          <div class="content-wrapper">
+ <section class="content">
+   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Job upload</h1>
+            <h1> Job Selection</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -177,79 +191,101 @@ $admin = $data['admin'];
       <div class="container-fluid">
         <div class="row">
           <!-- left column -->
-          <div class="col-md-12">
+        	<div class="col-md-12">
             <!-- jquery validation -->
-            <div class="card card-success">
-              <div class="card-header">
+            	<div class="card card-success collapsed-card">
+              		<div class="card-header">
+              			<h3 class="card-title"></h3>
+              				<div class="card-tools">
+                  				<button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                  				</button>
+                			</div>
                 
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form role="form" id="job-data-form">
-                <div class="card-body">
+              		</div>
+              		<!-- /.card-header -->
+              		<!-- form start -->
+              		
+                	<div class="card-body p-0">
+		                <table class="table table-striped">
+		                  <thead>
+		                    <tr>
+		                      <th style="width: 10px">#</th>
+		                      <th>Categories</th>
+		                      <th style="width: 40%;"></th>
+		                      
+		                    </tr>
+		                  </thead>
+		                  <tbody>
+		                    <tr>
+		                      <td>1.</td>
+		                      <td>Electronics</td>
+		                      <td>
+		                      	<div class="form-group">
+			                        <div class="custom-control custom-checkbox">
+			                          <input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
+			                          <label for="customCheckbox1" class="custom-control-label">Custom Checkbox</label>
+			                        </div>
+			                    </div>
+		                      </td>
+		                      
+		                    </tr>
+		                    <tr>
+		                      <td>2.</td>
+		                      <td>Automobiles</td>
+		                      <td>
+		                        <div class="custom-control custom-checkbox">
+		                          <input class="custom-control-input" type="checkbox" id="customCheckbox2" checked>
+		                          <label for="customCheckbox2" class="custom-control-label">Custom Checkbox checked</label>
+                        		</div>
+                        		
+		                      </td>
+		                      
+		                    </tr>
+		                    <tr>
+		                      <td>3.</td>
+		                      <td>PC's(Laptop & Desktop)</td>
+		                      <td>
+		                        <div class="custom-control custom-checkbox">
+		                          <input class="custom-control-input" type="checkbox" id="customCheckbox3" checked>
+		                          <label for="customCheckbox3" class="custom-control-label">Custom Checkbox checked</label>
+                        		</div>
+		                      </td>
+		                      
+		                    </tr>
+		                    <tr>
+		                      <td>4.</td>
+		                      <td>Mobile Phones</td>
+		                      <td>
+		                        <div class="custom-control custom-checkbox">
+		                          <input class="custom-control-input" type="checkbox" id="customCheckbox4" checked>
+		                          <label for="customCheckbox4" class="custom-control-label">Custom Checkbox checked</label>
+                        		</div>
+		                      </td>
+		                      
+		                    </tr>
+		                  </tbody>
+		                </table>
+		            </div>
+              	
 
                     
-                   <label for="basicinput">Search Customer</label> 
-                  
-                  <div class="input-group">
-                    <!--<label for="basicinput">Search Customer</label>-->
-                    
-                    <input type="text" name="lastname" class="form-control" id="searchLastName" placeholder="search customer's last name">
-                    <button type="button" class="btn btn-success btn-flat" id="searchLastName-btn" data-toggle="modal" data-target="#modal-lg" name="searchLastNameBtn"> 
-                      search
-                    </button>
-                    <?php include_once('app/includes/modal.php'); ?>
-                  </div>
-                  
-
-                  <div class="form-group">
-                    <label for="basicinput">Owner Name</label>
-                    <input type="text" name="owner-name" class="form-control" id="owner-name" data-customer-id="" readonly>
-                  </div>
-                  <div class="form-group">
-                    <label for="basicinput">Owner Phone Number</label>
-                    <input type="text" name="owner-phone" class="form-control" id="owner-phone" readonly>
-                  </div>
-                  <div class="form-group">
-                    <label for="basicinput">Job Title</label>
-                    <input type="text" name="job-title" class="form-control" id="job-title" placeholder="Enter Job Title">
-                  </div>
-                  <div class="form-group">
-                    <label for="basicinput">Device Name</label>
-                    <input type="text" name="device-name" class="form-control" id="device-name" placeholder="Enter device name ">
-                  </div>
-                  <div class="form-group">
-                    <label for="basicinput">Device Description</label>
-                    <input type="text" name="device-description" class="form-control" id="device-description" placeholder="Enter Device description">
-                  </div>
-                  <div class="form-group">
-                    <label for="basicinput">Device ID</label>
-                    <input type="text" name="device-id" class="form-control" id="device-id" placeholder="Enter device id">
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Faults/Complaints</label>
-                    <textarea type="date" name="fault" class="form-control" id="fault" placeholder="Enter fault"></textarea>
-                  </div>
-                  
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="button" class="btn btn-primary" id="create_job" name="create_job">Save Job</button>
-                </div>
-              </form>
+                   
+	           <div class="card-footer">
+	               <button type="button" class="btn btn-primary" id="saveJobCategory" name="create_job">Save selections
+	                </button>
+	           </div>
+              		
+            	</div>
             </div>
             <!-- /.card -->
-            </div>
+            
           <!--/.col (left) -->
           <!-- right column -->
-          <div class="col-md-6">
-
-          </div>
-          <!--/.col (right) -->
+          
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
-        </section>
+    </section>
   
   
 
@@ -280,10 +316,10 @@ $admin = $data['admin'];
 <script src="../../assets/plugins/AdminLTE-master1/plugins/moment/moment.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../assets/plugins/AdminLTE-master1/dist/js/adminlte.js"></script>
+<script src="../../assets/plugins/AdminLTE-master1/dist/js/demo.js"></script>
 
-<script type="text/javascript" src="/assets/js/job.js"></script>
 
 
 </body>
 </html>
-                                                
+
