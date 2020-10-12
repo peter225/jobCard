@@ -10,6 +10,7 @@ class Job
     protected $ownerName;
     protected $ownerPhoneNumber;
 	protected $fault;
+    protected $price;
 	protected $deviceName;
 	protected $dbInstance;
     protected $searchString;
@@ -108,6 +109,51 @@ class Job
         }
     }
 
+    public function searchJob( Admin $admin )
+    {
+        try
+        {
+             if(isset($_POST['search-btn']))
+             {
+                $customerId = trim($_POST['customer_id']);
+
+                $sql = 'SELECT * FROM jobs WHERE customer_id =:customerId';
+
+                $stmt = $this->dbInstance->prepare($sql);
+
+                $stmt->execute( array(':customerId'=> $customerId) );
+
+                $results = $stmt->fetchAll();
+
+                return $results;
+             } 
+             else
+             {
+                echo "No results";
+             }
+        }
+        catch (PDOException $e) 
+        {
+           throw new PDOException($e->getMessage() );
+             
+        }
+        catch (CustomException $e) 
+        {
+           throw new CustomException( $e->getMessage() );
+             
+        }
+        catch ( Exception $e) 
+        {
+           throw new Exception($e->getMessage() );
+             
+        }
+        catch ( Error $e) 
+        {
+           throw new Error($e->getMessage() );
+             
+        }
+    }
+
     public function setTitle( $title )
     {
         $this->title = $title;
@@ -156,6 +202,16 @@ class Job
     public function getFault()
     {
         return $this->fault;
+    }
+
+    public function setPrice( $price )
+    {
+        $this->price = $price;
+    }
+    
+    public function getPrice()
+    {
+        return $this->price;
     }
 
     public function generateID( $digit )

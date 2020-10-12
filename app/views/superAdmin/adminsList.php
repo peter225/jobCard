@@ -106,7 +106,7 @@ $superAdmin = $data['superAdmin'];
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/superAdmins/registration" class="nav-link">
                   <i class="fas fa-th nav-icon"></i>
                   <p>Admin registrations</p>
                 </a>

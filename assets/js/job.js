@@ -164,11 +164,11 @@ $(document).ready(function(){
       });
   });
  
-var sendJobDetails = function(ownerName, ownerPhone, jobTitle, deviceName,deviceDescription,deviceID, fault,customerId, callback ){
+var sendJobDetails = function(ownerName, ownerPhone, jobTitle, deviceName,deviceDescription,deviceID, fault, price,customerId, callback ){
   $.ajax({
           type:"POST", 
           url:"/task/createJob",
-          data:"owner-name=" + ownerName + "&owner-phone=" + ownerPhone + "&job-title=" + jobTitle + "&device-name=" + deviceName + "&device-description=" + deviceDescription + "&device-id=" + deviceID + "&fault=" + fault + "&customerId=" + customerId + "&create_job=true",
+          data:"owner-name=" + ownerName + "&owner-phone=" + ownerPhone + "&job-title=" + jobTitle + "&device-name=" + deviceName + "&device-description=" + deviceDescription + "&device-id=" + deviceID + "&fault=" + fault + "&price=" + price + "&customerId=" + customerId + "&create_job=true",
           dataType:"json",
           encode:true
         })
@@ -187,14 +187,14 @@ var sendJobDetails = function(ownerName, ownerPhone, jobTitle, deviceName,device
         })
 };
 $("#create_job").on('click', function(event){
-  
+
   var form = $(this).closest('form');
 
   var customerId =  $('input[name=owner-name]', form ).data('customer-id');
 
   console.log(customerId);
 
-  sendJobDetails($("#owner-name").val(), $("#owner-phone").val(), $("#job-title").val(), $("#device-name").val(),$("#device-description").val(),$("#device-id").val(),$("#fault").val(), customerId, function(response){
+  sendJobDetails($("#owner-name").val(), $("#owner-phone").val(), $("#job-title").val(), $("#device-name").val(),$("#device-description").val(),$("#device-id").val(),$("#fault").val(),$("#price").val(), customerId, function(response){
     
     if(response.success)
     {

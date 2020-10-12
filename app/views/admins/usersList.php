@@ -128,6 +128,12 @@ $admin = $data['admin'];
                 </a>
               </li>
               <li class="nav-item">
+                <a href="/Admins/jobDetails" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Job Details</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="/Admins/task" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Upload Job</p>

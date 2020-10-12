@@ -127,6 +127,12 @@ $admin = $data['admin'];
                 </a>
               </li>
               <li class="nav-item">
+                <a href="/Admins/jobDetails" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Job Details</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="/Admins/userList" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Customer details</p>
@@ -226,11 +232,16 @@ $admin = $data['admin'];
                     <label for="basicinput">Device ID</label>
                     <input type="text" name="device-id" class="form-control" id="device-id" placeholder="Enter device id">
                   </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Price</label>
+                    <input type="text" name="price" class="form-control" id="price" placeholder="Enter Job price"></input>
+                  </div>
                   
                   <div class="form-group">
                     <label for="exampleInputPassword1">Faults/Complaints</label>
                     <textarea type="date" name="fault" class="form-control" id="fault" placeholder="Enter fault"></textarea>
                   </div>
+                  
                   
                 <!-- /.card-body -->
                 <div class="card-footer">

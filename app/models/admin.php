@@ -58,7 +58,8 @@ class Admin extends Person
                                           fault = :Fault, 
                                           owner_name = :ownerName, 
                                           owner_phone = :ownerPhone,
-                                          customer_id = :customerId";
+                                          customer_id = :customerId,
+                                          price = :price";
             
             $stmt = $this->dbInstance->prepare( $sql );
 
@@ -74,7 +75,8 @@ class Admin extends Person
                                     ':Fault' => $job->getFault(),  
                                     ':ownerName'=>$job->getOwnerName(), 
                                     ':ownerPhone'=>$job->getOwnerPhone(),
-                                    ':customerId'=>$job->getOwnerID()
+                                    ':customerId'=>$job->getOwnerID(),
+                                    ':price'=>$job->getPrice()
                                 ) 
                             );
 
@@ -175,7 +177,7 @@ class Admin extends Person
                   
         }
     }
-    
+
     public function fetchCustomers()
     {
         try

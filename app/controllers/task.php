@@ -106,7 +106,7 @@ class Task extends Controller
 		try 
 		{
 
-			$jobTitle = $deviceName = $deviceDescription = $deviceID = $fault = $role= $ownerName = $ownerPhone = $customerId = "";
+			$jobTitle = $deviceName = $deviceDescription = $deviceID = $fault = $role= $ownerName = $ownerPhone = $customerId = $price = "";
 
     		if( ! isset($_POST['create_job']) )
     			throw new CustomException("Ensure to use the Submit button");
@@ -146,8 +146,7 @@ class Task extends Controller
     		}
     		
             if( '' == $deviceDescription )
-
-    			throw new CustomException("enter device description");
+            	throw new CustomException("enter device description");
 
             if(isset($_POST['owner-name']))
             {
@@ -155,8 +154,7 @@ class Task extends Controller
             }
             
             if( '' == $ownerName )
-
-                throw new CustomException("enter owner's name");
+            	throw new CustomException("enter owner's name");
 
             if(isset($_POST['owner-phone']))
             {
@@ -164,8 +162,7 @@ class Task extends Controller
             }
             
             if( '' == $ownerPhone )
-
-                throw new CustomException("enter owner's mobile or phone number");
+            	throw new CustomException("enter owner's mobile or phone number");
 
 
     		if(isset($_POST['device-id']))
@@ -174,8 +171,7 @@ class Task extends Controller
     		}
 
             if( '' == $deviceID )
-
-            throw new CustomException("enter device id");
+            	throw new CustomException("enter device id");
                     		
             if(isset($_POST['fault']))
     		{
@@ -185,6 +181,14 @@ class Task extends Controller
             if( '' == $fault )
     			throw new CustomException("enter what's wrong with the device");
 
+    		if(isset($_POST['price']))
+    		{
+        		$price = trim( $_POST['price'] );
+    		}
+
+            if( '' == $price )
+    			throw new CustomException("enter Job's price");
+
 
 
             $admin = $this->model('Admin');
@@ -193,10 +197,10 @@ class Task extends Controller
                         
     		$admin->setDBInstance( $this->getDBInstance() );
 
-    		$job->setOwnerID($customerId);
-
     		$admin->setID( $admin->getID() );
 
+			$job->setOwnerID($customerId);
+			
     		$job->setTitle($jobTitle);
 
             $job->setOwnerName($ownerName);
@@ -210,6 +214,8 @@ class Task extends Controller
     		$job->setDeviceID($deviceID);
 
     		$job->setFault($fault);
+
+    		$job->setPrice($price);
 
             $admin->setSessionID( $_SESSION['sessionID'] );
             

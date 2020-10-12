@@ -121,6 +121,12 @@ $admin = $data['admin'];
                 </a>
               </li>
               <li class="nav-item">
+                <a href="/Admins/jobDetails" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Job Details</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="/Admins/userList" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Customer details</p>
@@ -194,51 +200,22 @@ $admin = $data['admin'];
               <a href="/Admins/task" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+          
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>44</h3>
-
-                <p>Add Administrators</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-save"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>65</h3>
-
-                <p>Mail Customers</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-mail-bulk"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-        </div>
-        <div class="row">
+        
+       
           <div class="col-lg-3 col-6">
             <!-- small card -->
-            <div class="small-box bg-info">
+            <div class="small-box bg-warning">
               <div class="inner">
                 <h3>0</h3>
 
-                <p>Update Customer info.</p>
+                <p>Job details</p>
               </div>
               <div class="icon">
                 <i class="fas fa-shopping-cart"></i>
               </div>
-              <a href="#" class="small-box-footer">
+              <a href="/Admins/jobDetails" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -246,7 +223,7 @@ $admin = $data['admin'];
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small card -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-danger">
               <div class="inner">
                 <h3 class="customerNo" data-cutomerNo id="customerNo">
                   3
@@ -265,42 +242,8 @@ $admin = $data['admin'];
               </a>
             </div>
           </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small card -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>44</h3>
-
-                <p>View Job Status.</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-street-view"></i>
-              </div>
-              <a href="#" class="small-box-footer">
-                More info <i class="fas fa-arrow-circle-right"></i>
-              </a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small card -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>65</h3>
-
-                <p>Update Job details.</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-adjust"></i>
-              </div>
-              <a href="#" class="small-box-footer">
-                More info <i class="fas fa-arrow-circle-right"></i>
-              </a>
-            </div>
-          </div>
-          <!-- ./col -->
         </div>
+          <!-- ./col -->
 
         <!-- /.row -->
         <!-- Main row -->

@@ -273,6 +273,7 @@ class Admins extends Controller
 		}
 	}
 
+
 	public function registerCustomers()
 	{
 		try
@@ -314,6 +315,101 @@ class Admins extends Controller
 		catch( Error $e )
 		{
 
+		}
+	}
+
+	public function jobDetails()
+	{
+		try
+		{
+			if( ! isset( $_SESSION['adminID'] ) || ! isset( $_SESSION['sessionID'] ) )
+			{
+				$this->view('login/admin');
+				return;
+			}
+
+			$admin = $this->model('Admin');
+
+			$admin->setUserName( $_SESSION['adminID'] );
+
+			$admin->setDBInstance( $this->getDBInstance() );
+
+			$admin->loadProfile();
+
+			if( $admin->getSessionID() != $_SESSION['sessionID'] )
+			{
+				$this->view('login/admin');
+				return;
+			}
+
+			$this->view('admins/jobDetails', ['admin'=>$admin]);
+		}
+		catch( PDOException $e )
+		{
+			$e->getMessage();
+		}
+		catch( CustomException $e )
+		{
+			$e->getMessage();
+		}
+		catch( Exception $e )
+		{
+			$e->getMessage();
+		}
+		catch( Error $e )
+		{
+			$e->getMessage();
+		}
+	}
+
+	public function viewJob()
+	{
+		try 
+		{
+			$admin = $this->model('Admin');
+
+			$job = $this->model('Job');
+                        
+            $admin->setDBInstance( $this->getDBInstance() );
+
+            $job->setDBInstance($this->getDBInstance() );
+            
+            $admin->setID($admin->getID());
+
+            $search = $job->searchJob($admin);
+            
+            if( !empty($search) )
+            {
+                
+                $success['message'] =  $search;
+
+                $success['title'] =  'Success';
+
+                $this->response['success'] = $success;
+
+                $this->response['error'] = false;
+
+                echo  json_encode( $this->response );    
+            }
+            else
+            {
+                $error['message'] = 'No matching records';
+
+                $error['title'] = 'Error';
+
+                $this->response['dashboard'] = 'Admins';
+
+                $this->response['success'] = false;
+
+                $this->response['error'] = $error;
+
+                echo  json_encode( $this->response );       
+            }
+
+		} 
+		catch (Exception $e)
+		{
+			
 		}
 	}
 }
