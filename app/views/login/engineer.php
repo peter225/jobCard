@@ -25,7 +25,7 @@
                 </a>
 
                 <a class="brand" href="#">
-                    JobCard Admin Login
+                    JobCard Engineer Login
                 </a>
 
                 <div class="nav-collapse collapse navbar-inverse-collapse">
@@ -72,7 +72,7 @@
                         <div class="module-foot">
                             <div class="control-group">
                                 <div class="controls clearfix">
-                                    <button type="button" class="btn btn-primary pull-right" id="login-btn" name="Admin">Login</button>
+                                    <button type="button" class="btn btn-primary pull-right" id="login-btn" name="engineer">Login</button>
                                     <label class="checkbox">
                                         <input type="checkbox"> Remember me
                                     </label>

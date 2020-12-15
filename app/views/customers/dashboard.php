@@ -59,10 +59,9 @@ $customer = $data['customer'];
                                 <li><a href="#"><i class="menu-icon icon-dashboard"></i>
                                 <?php
 
-                                echo "Welcome";
                                 
-                                if( $customer instanceof Customer && method_exists( $customer, 'getUsername') )
-                                    echo ' ' . $customer->getUsername() . ' ' . "!"; 
+                                
+                                echo 'Welcome' . ' ' . $customer->getUserName() . ' ' . $customer->getID();
                                 ?>
 
                                 </a></li>

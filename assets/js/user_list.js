@@ -56,6 +56,7 @@ $(document).ready(function(){
             '<thead>' +
 
             '<tr><th>SN</th><th>First name</th><th>Last name</th><th>Email</th></tr>' + 
+
             '</thead>' +
 
             '<tbody>'; 
@@ -75,22 +76,22 @@ $(document).ready(function(){
             customersTable += '</tbody></table>';
 
             var customerDetail = '<div>' +
-                    '<div class="row">' +
-                      '<div class="col-12">' +
-                        '<div class="card">' +
-                          '<div class="card-header">' +
-                            '<h3 class="card-title">Customer Table</h3>' +
-                          '</div>' +
-                          '<!-- /.card-header -->' +
-                          '<div class="card-body">' +
-                          customersTable +
-                          '</div>' +
-                          '<!-- /.card-body -->' +
-                        '</div>' +
-                        '<!-- /.card -->' +
-                      '</div>' +
-                    '</div>' +
-                  '</div>';
+                                  '<div class="row">' +
+                                    '<div class="col-12">' +
+                                      '<div class="card">' +
+                                        '<div class="card-header">' +
+                                          '<h3 class="card-title">Customer Table</h3>' +
+                                        '</div>' +
+                                        '<!-- /.card-header -->' +
+                                        '<div class="card-body">' +
+                                        customersTable +
+                                        '</div>' +
+                                        '<!-- /.card-body -->' +
+                                      '</div>' +
+                                      '<!-- /.card -->' +
+                                    '</div>' +
+                                  '</div>' +
+                                '</div>';
 
             $('#my-modal').find('h4.modal-title').html('Customer Details');
 
@@ -114,7 +115,5 @@ $(document).ready(function(){
           }
         });
    }); 
-  
-  
 });
 

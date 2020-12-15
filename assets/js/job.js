@@ -34,7 +34,7 @@ var handleAjaxResponse = function( response ){
 
           toastr['success'](response.success.message, response.success.title );
       }
-  }
+  };
 
 
 $(document).ready(function(){
@@ -117,22 +117,22 @@ $(document).ready(function(){
               customersTable += '</tbody></table>';
 
               var customerDetail = '<div>' +
-                    '<div class="row">' +
-                      '<div class="col-12">' +
-                        '<div class="card">' +
-                          '<div class="card-header">' +
-                            '<h3 class="card-title">Customer Table</h3>' +
-                          '</div>' +
-                          '<!-- /.card-header -->' +
-                          '<div class="card-body table-responsive p-0">' +
-                          customersTable +
-                          '</div>' +
-                          '<!-- /.card-body -->' +
-                        '</div>' +
-                        '<!-- /.card -->' +
-                      '</div>' +
-                    '</div>' +
-                  '</div>';
+                                      '<div class="row">' +
+                                        '<div class="col-12">' +
+                                          '<div class="card">' +
+                                            '<div class="card-header">' +
+                                              '<h3 class="card-title">Customer Table</h3>' +
+                                            '</div>' +
+                                            '<!-- /.card-header -->' +
+                                            '<div class="card-body table-responsive p-0">' +
+                                            customersTable +
+                                            '</div>' +
+                                            '<!-- /.card-body -->' +
+                                          '</div>' +
+                                          '<!-- /.card -->' +
+                                        '</div>' +
+                                      '</div>' +
+                                    '</div>';
 
               $('#my-modal').find('h4.modal-title').html('search results');
 
@@ -151,6 +151,7 @@ $(document).ready(function(){
                 $('#my-modal').modal("hide");
 
                 console.log( $(this).data('customer-firstname') );
+              
               });
             }
             else if (response.error) 
@@ -164,11 +165,11 @@ $(document).ready(function(){
       });
   });
  
-var sendJobDetails = function(ownerName, ownerPhone, jobTitle, deviceName,deviceDescription,deviceID, fault, price,customerId, callback ){
+var sendJobDetails = function(ownerName, ownerPhone, jobTitle, deviceName,deviceDescription,deviceID, fault, jobPrice, pricePaid, customerId, callback ){
   $.ajax({
           type:"POST", 
           url:"/task/createJob",
-          data:"owner-name=" + ownerName + "&owner-phone=" + ownerPhone + "&job-title=" + jobTitle + "&device-name=" + deviceName + "&device-description=" + deviceDescription + "&device-id=" + deviceID + "&fault=" + fault + "&price=" + price + "&customerId=" + customerId + "&create_job=true",
+          data:"owner-name=" + ownerName + "&owner-phone=" + ownerPhone + "&job-title=" + jobTitle + "&device-name=" + deviceName + "&device-description=" + deviceDescription + "&device-id=" + deviceID + "&fault=" + fault + "&actualPrice=" + jobPrice + "&pricePaid=" + pricePaid + "&customerId=" + customerId + "&create_job=true",
           dataType:"json",
           encode:true
         })
@@ -194,7 +195,7 @@ $("#create_job").on('click', function(event){
 
   console.log(customerId);
 
-  sendJobDetails($("#owner-name").val(), $("#owner-phone").val(), $("#job-title").val(), $("#device-name").val(),$("#device-description").val(),$("#device-id").val(),$("#fault").val(),$("#price").val(), customerId, function(response){
+  sendJobDetails($("#owner-name").val(), $("#owner-phone").val(), $("#job-title").val(), $("#device-name").val(),$("#device-description").val(),$("#device-id").val(),$("#fault").val(),$("#actualPrice").val(),$("#pricePaid").val(), customerId, function(response){
     
     if(response.success)
     {
@@ -208,7 +209,7 @@ $("#create_job").on('click', function(event){
 
       toastr['error']( response.error.message, response.error.title );
     }
-  } );
+  });
 });
 
    

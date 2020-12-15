@@ -45,7 +45,6 @@ class Admin extends Person
                 $job->setJobID( $jobID );
 
                 if( ! $job->IDExists( $jobID ) )
-
                     break;
 
             }
@@ -59,12 +58,10 @@ class Admin extends Person
                                           owner_name = :ownerName, 
                                           owner_phone = :ownerPhone,
                                           customer_id = :customerId,
-                                          price = :price";
+                                          job_price = :job_price,
+                                          amount_paid = :amount_paid";
             
             $stmt = $this->dbInstance->prepare( $sql );
-
-            
-            
 
             $stmt->execute(array(   
                                     ':ID'=>$job->getJobID(), 
@@ -76,7 +73,8 @@ class Admin extends Person
                                     ':ownerName'=>$job->getOwnerName(), 
                                     ':ownerPhone'=>$job->getOwnerPhone(),
                                     ':customerId'=>$job->getOwnerID(),
-                                    ':price'=>$job->getPrice()
+                                    ':job_price'=>$job->getActualPrice(),
+                                    ':amount_paid'=>$job->getAmountPaid()
                                 ) 
                             );
 
@@ -175,6 +173,62 @@ class Admin extends Person
         {
             throw new Error( $e->getMessage() );
                   
+        }
+    }
+    public function updateJob(Job $job)
+    {
+        try
+        {
+            
+            $job->setDBInstance( $this->dbInstance ); 
+
+            $sql = "UPDATE jobs SET job_title = :jobTitle, 
+                                    device_name = :deviceName, 
+                                    device_description = :deviceDescription, 
+                                    device_id = :deviceID, 
+                                    fault = :fault, 
+                                    job_price = :jobPrice,
+                                    amount_paid = :amountPaid,
+                                    balance = :balance
+                                    WHERE id = :ID";
+            
+            $stmt = $this->dbInstance->prepare( $sql );
+
+            $stmt->execute(array(   
+                                    ':jobTitle'=>$job->getTitle(), 
+                                    ':deviceName'=>$job->getDeviceName(), 
+                                    ':deviceDescription'=>$job->getDeviceDescription(), 
+                                    ':deviceID'=>$job->getDeviceID(), 
+                                    ':fault'=>$job->getFault(),  
+                                    ':ID'=>$job->getJobID(),
+                                    ':jobPrice'=>$job->getActualPrice(),
+                                    ':amountPaid'=>$job->getAmountPaid(),
+                                    ':balance'=>$job->getBalance()
+                                ) 
+                            );
+
+            return ( $stmt->rowCount() > 0 );
+            throw new CustomException("Error Processing Request", 1);
+        }
+        catch (PDOException $e) 
+        {
+           throw new PDOException($e->getMessage() );
+             
+        }
+        catch (CustomException $e) 
+        {
+           throw new CustomException( $e->getMessage() );
+             
+        }
+        catch ( Exception $e) 
+        {
+           throw new Exception($e->getMessage() );
+             
+        }
+        catch ( Error $e) 
+        {
+           throw new Error($e->getMessage() );
+             
         }
     }
 

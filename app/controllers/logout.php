@@ -52,6 +52,13 @@ class Logout extends Controller
                 $user->setID($_SESSION['superAdminID']);
             }
 
+            else if( isset($_SESSION['engineerID'] ) )
+            {
+                
+                $user = $this->model('enginneer');
+
+                $user->setID($_SESSION['engineerID']);
+            }
 
             if( null != $user )
             {
@@ -61,15 +68,15 @@ class Logout extends Controller
             }
 
             if( $user instanceof superAdmin )
-
                 $this->view('login/superAdmin');
 
+            else if( $user instanceof engineer )
+                $this->view('login/engineer');
+
             else if( $user instanceof Admin )
-                
                 $this->view('login/admin');
 
             else if( $user instanceof Customer )
-                
                 $this->view('login/index');
 
         }

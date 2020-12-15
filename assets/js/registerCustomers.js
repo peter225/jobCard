@@ -64,18 +64,18 @@ var registerCustomers = function( form, callback )
       xhttp.send( formData );
 };
 
-    var registerCustomerButton = document.getElementById('register_customer');
+var registerCustomerButton = document.getElementById('register_customer');
 
-    registerCustomerButton.addEventListener( 'click', function(){
+registerCustomerButton.addEventListener( 'click', function(){
 
-    var customerDataForm = document.getElementById('customer-data-form');
+  var customerDataForm = document.getElementById('customer-data-form');
 
-      toastr.options = toastrOptions;
+  toastr.options = toastrOptions;
           
-      toastr['info']('Connecting...please wait', 'Connecting');
+  toastr['info']('Connecting...please wait', 'Connecting');
         //submitButton.setAttribute('disabled', true);
-      registerCustomers( customerDataForm, handleAjaxResponse );
+  registerCustomers( customerDataForm, handleAjaxResponse );
 
-    });
+});
 
    

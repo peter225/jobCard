@@ -13,6 +13,7 @@ var xhttp = new XMLHttpRequest();
         xhttp.open("POST", "/Login/loginUser", true);
 
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        
         xhttp.setRequestHeader("Accept", "application/json");
         
         xhttp.send("username=" + userName + "&psw=" + password + "&role=" + role + "&submit-btn=true" );

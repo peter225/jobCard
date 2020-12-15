@@ -16,6 +16,26 @@
               "showMethod": "fadeIn",
               "hideMethod": "fadeOut"
             };
+    var handleAjaxResponse = function( response ){
+
+      
+      toastr.clear();
+
+      if(  ! response.success )
+      {
+          toastr.options = toastrOptions;
+
+          toastr['error']( response.error.message, response.error.title );
+      }
+      else if( ! response.error )
+      {
+          toastr.options = toastrOptions;
+
+          toastr['success'](response.success.message, response.success.title );
+
+          
+      }
+  }
             
     var loginUser = function( userName, password, role, callback ){
 
@@ -59,13 +79,14 @@
 
         //submitButton.setAttribute('disabled', true);
         loginUser( userName, password, role, function( response ){
-console.log(response);
+//console.log(response);
           toastr.clear();
 
           if( ! response.success )
           {
-              toastr.options = toastrOptions;
-              toastr['error']( response.error, 'Error');
+            toastr.options = toastrOptions;
+
+            toastr['error']( response.error, 'Error' );
           }
           else if( ! response.error && 'OK' === response.success.toUpperCase() )
           {

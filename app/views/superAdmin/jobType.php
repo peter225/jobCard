@@ -223,7 +223,7 @@ $superAdmin = $data['superAdmin'];
 		                      	<div class="form-group">
 			                        <div class="custom-control custom-checkbox">
 			                          <input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-			                          <label for="customCheckbox1" class="custom-control-label">Custom Checkbox</label>
+			                          <label for="customCheckbox1" class="custom-control-label"></label>
 			                        </div>
 			                    </div>
 		                      </td>
@@ -235,7 +235,7 @@ $superAdmin = $data['superAdmin'];
 		                      <td>
 		                        <div class="custom-control custom-checkbox">
 		                          <input class="custom-control-input" type="checkbox" id="customCheckbox2" checked>
-		                          <label for="customCheckbox2" class="custom-control-label">Custom Checkbox checked</label>
+		                          <label for="customCheckbox2" class="custom-control-label"></label>
                         		</div>
                         		
 		                      </td>
@@ -247,7 +247,7 @@ $superAdmin = $data['superAdmin'];
 		                      <td>
 		                        <div class="custom-control custom-checkbox">
 		                          <input class="custom-control-input" type="checkbox" id="customCheckbox3" checked>
-		                          <label for="customCheckbox3" class="custom-control-label">Custom Checkbox checked</label>
+		                          <label for="customCheckbox3" class="custom-control-label"></label>
                         		</div>
 		                      </td>
 		                      
@@ -258,7 +258,7 @@ $superAdmin = $data['superAdmin'];
 		                      <td>
 		                        <div class="custom-control custom-checkbox">
 		                          <input class="custom-control-input" type="checkbox" id="customCheckbox4" checked>
-		                          <label for="customCheckbox4" class="custom-control-label">Custom Checkbox checked</label>
+		                          <label for="customCheckbox4" class="custom-control-label"></label>
                         		</div>
 		                      </td>
 		                      

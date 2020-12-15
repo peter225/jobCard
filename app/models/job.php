@@ -10,8 +10,11 @@ class Job
     protected $ownerName;
     protected $ownerPhoneNumber;
 	protected $fault;
-    protected $price;
+    protected $jobPrice;
+    protected $pricePaid;
 	protected $deviceName;
+    protected $status;
+    protected $balance;
 	protected $dbInstance;
     protected $searchString;
 
@@ -113,8 +116,8 @@ class Job
     {
         try
         {
-             if(isset($_POST['search-btn']))
-             {
+            if(isset($_POST['search-btn']))
+            {
                 $customerId = trim($_POST['customer_id']);
 
                 $sql = 'SELECT * FROM jobs WHERE customer_id =:customerId';
@@ -123,14 +126,14 @@ class Job
 
                 $stmt->execute( array(':customerId'=> $customerId) );
 
-                $results = $stmt->fetchAll();
+                $results =  $stmt->fetchAll();
 
                 return $results;
-             } 
-             else
-             {
+            } 
+            else
+            {
                 echo "No results";
-             }
+            }
         }
         catch (PDOException $e) 
         {
@@ -153,6 +156,7 @@ class Job
              
         }
     }
+    
 
     public function setTitle( $title )
     {
@@ -162,6 +166,26 @@ class Job
     public function getTitle()
     {
         return $this->title;
+    }
+
+    public function setStatus( $status )
+    {
+        $this->status = $status;
+    }
+
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    public function setBalance( $balance )
+    {
+        $this->balance = $balance;
+    }
+
+    public function getBalance()
+    {
+        return $this->balance;
     }
 
     public function setDeviceName($deviceName)
@@ -204,14 +228,24 @@ class Job
         return $this->fault;
     }
 
-    public function setPrice( $price )
+    public function setActualPrice( $jobPrice )
     {
-        $this->price = $price;
+        $this->jobPrice = $jobPrice;
     }
     
-    public function getPrice()
+    public function getActualPrice()
     {
-        return $this->price;
+        return $this->jobPrice;
+    }
+
+    public function setAmountPaid( $pricePaid )
+    {
+        $this->pricePaid = $pricePaid;
+    }
+    
+    public function getAmountPaid()
+    {
+        return $this->pricePaid;
     }
 
     public function generateID( $digit )

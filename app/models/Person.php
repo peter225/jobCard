@@ -137,6 +137,8 @@ class Person
                 $sql = 'UPDATE admin SET session_id = :sessionID WHERE username = :userName';
             else if( $this instanceof superAdmin )
                 $sql = 'UPDATE superadmin SET session_id = :sessionID WHERE username = :userName';
+            else if( $this instanceof engineer )
+                $sql = 'UPDATE engineer SET session_id = :sessionID WHERE username = :userName';
 
 
             if( '' == $sql )
@@ -175,6 +177,9 @@ class Person
         else if( $this instanceof superAdmin )
                 $sql = 'UPDATE superadmin SET session_id = NULL WHERE username = :userName';
 
+        else if( $this instanceof engineer )
+                $sql = 'UPDATE engineer SET session_id = NULL WHERE username = :userName';
+
         $stmt = $this->dbInstance->prepare( $sql );
 
         $stmt->execute( array(':userName'=>$this->userName) );
@@ -199,6 +204,8 @@ class Person
                 $sql = 'SELECT session_id FROM admin WHERE username = :userName';
             else if( $this instanceof superAdmin )
                 $sql = 'SELECT session_id FROM superadmin WHERE username = :userName';
+            else if( $this instanceof engineer )
+                $sql = 'SELECT session_id FROM engineer WHERE username = :userName';
 
             if( '' == $sql )
                 throw new CustomException("Unrecognised role");
@@ -237,6 +244,8 @@ class Person
                 $sql = 'SELECT * FROM admin WHERE username = :userName';
             else if( $this instanceof superAdmin )
                 $sql = 'SELECT * FROM superadmin WHERE username = :userName';
+            else if( $this instanceof engineer )
+                $sql = 'SELECT * FROM engineer WHERE username = :userName';
 
             if( '' == $sql )
                 throw new CustomException("Unrecognised role");
@@ -247,12 +256,13 @@ class Person
 
             $row = $stmt->fetch( PDO::FETCH_ASSOC );
 
+            //$this->id = $row['id'];
             $this->firstName = $row['firstname'];
             $this->lastName = $row['lastname'];
             $this->email = $row['email'];
             $this->gender = $row['gender'];
             $this->sessionID = $row['session_id'];
-            $this->dob = $row['dob'];
+            //$this->dob = $row['dob'];
 
         }
         catch (PDOException $e) 
@@ -279,16 +289,16 @@ class Person
             $sql = "";
 
             if( $this instanceof Admin )
-
                 $sql = "SELECT password FROM admin WHERE username = :userName";
 
             else if( $this instanceof Customer )
-
                 $sql = "SELECT password FROM customer WHERE username = :userName";
 
             else if( $this instanceof superAdmin )
-
                 $sql = "SELECT password FROM superadmin WHERE username = :userName";
+
+            else if( $this instanceof engineer )
+                $sql = "SELECT password FROM engineer WHERE username = :userName";
 
             if( "" == $sql )
                 throw new CustomException( "Unrecognised role" );
@@ -300,26 +310,28 @@ class Person
             $row = $stmt->fetch( PDO::FETCH_ASSOC );
 
             $passwordHash = $row['password'];
-
+//var_dump($passwordHash);
 
             //throw new CustomException( $passwordHash );
-            
-              
-              return(password_verify($pWord, $passwordHash ));
+            return(password_verify($pWord, $passwordHash ));
         }
         catch (PDOException $e) 
         {
-           throw new PDOException($e->getMessage() );
+           throw new PDOException( $e->getMessage() );
              
         }
         catch (CustomException $e) 
         {
-           throw new CustomException( $e->getMessage() );
-             
+            throw new CustomException( $e->getMessage() );             
+        }
+
+        catch (Error $e) 
+        {
+            throw new Error( $e->getMessage() );             
         }
         catch ( Exception $e) 
         {
-           throw new Exception($e->getMessage() );
+           throw new Exception( $e->getMessage() );
              
         }
         

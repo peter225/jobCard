@@ -106,7 +106,7 @@ class Task extends Controller
 		try 
 		{
 
-			$jobTitle = $deviceName = $deviceDescription = $deviceID = $fault = $role= $ownerName = $ownerPhone = $customerId = $price = "";
+			$jobTitle = $deviceName = $deviceDescription = $deviceID = $fault = $role= $ownerName = $ownerPhone = $customerId = $jobPrice = $pricePaid = "";
 
     		if( ! isset($_POST['create_job']) )
     			throw new CustomException("Ensure to use the Submit button");
@@ -181,13 +181,21 @@ class Task extends Controller
             if( '' == $fault )
     			throw new CustomException("enter what's wrong with the device");
 
-    		if(isset($_POST['price']))
+    		if(isset($_POST['actualPrice']))
     		{
-        		$price = trim( $_POST['price'] );
+        		$jobPrice = trim( $_POST['actualPrice'] );
     		}
 
-            if( '' == $price )
+            if( '' == $jobPrice )
     			throw new CustomException("enter Job's price");
+
+    		if(isset($_POST['pricePaid']))
+    		{
+        		$pricePaid = trim( $_POST['pricePaid'] );
+    		}
+
+            if( '' == $pricePaid )
+    			throw new CustomException("enter Amount Paid");
 
 
 
@@ -215,7 +223,9 @@ class Task extends Controller
 
     		$job->setFault($fault);
 
-    		$job->setPrice($price);
+    		$job->setActualPrice($jobPrice);
+
+    		$job->setAmountPaid($pricePaid);
 
             $admin->setSessionID( $_SESSION['sessionID'] );
             

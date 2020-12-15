@@ -197,7 +197,7 @@ $admin = $data['admin'];
                     
                    <label for="basicinput">Search Customer</label> 
                   
-                  <div class="input-group">
+                    <div class="input-group">
                     <!--<label for="basicinput">Search Customer</label>-->
                     
                     <input type="text" name="lastname" class="form-control" id="searchLastName" placeholder="search customer's last name">
@@ -233,8 +233,13 @@ $admin = $data['admin'];
                     <input type="text" name="device-id" class="form-control" id="device-id" placeholder="Enter device id">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Price</label>
-                    <input type="text" name="price" class="form-control" id="price" placeholder="Enter Job price"></input>
+                    <label for="exampleInputPassword1">Actual Price</label>
+                    <input type="text" name="actualPrice" class="form-control" id="actualPrice" placeholder="Enter Job price"></input>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Amount Paid</label>
+                    <input type="text" name="pricePaid" class="form-control" id="pricePaid" placeholder="Enter Amount Paid"></input>
                   </div>
                   
                   <div class="form-group">

@@ -39,7 +39,6 @@ class Login extends Controller
         		throw new CustomException("Enter your username and/or passsword");
 
             if( isset($_POST['role']))
-                
                 $role = $_POST['role'];
 
             $user = null;
@@ -47,9 +46,11 @@ class Login extends Controller
             if( 'Customer' == $role )
     		  $user = $this->model('Customer');
 
-                
             else if( 'Admin' == $role )
                 $user = $this->model('Admin');
+
+            else if( 'engineer' == $role )
+                $user = $this->model('engineer');
 
             else if( 'superAdmin' == $role )
                 $user = $this->model('superAdmin');
@@ -66,16 +67,11 @@ class Login extends Controller
 
             $user->setUserName( $uName );
 
-
-            
-
-
             if( ! $user->verifyPassword ( $pWord) )
-
                 throw new CustomException( "Unkown user" );
         	
         	$_SESSION['sessionID'] = Person::generateRandomNumber( 20 );
-
+            //var_dump($_SESSION['sessionID']);
         	$user->setSessionID( $_SESSION['sessionID'] );
 
             if( $user instanceof Customer )
@@ -95,6 +91,13 @@ class Login extends Controller
                 $_SESSION['superAdminID'] = $user->getUserName();
 
                 $this->response['dashboard'] = 'superAdmins';                
+            }
+
+            else if( $user instanceof engineer )
+            {
+                $_SESSION['engineerID'] = $user->getUserName();
+
+                $this->response['dashboard'] = 'engineers';                
             }
 
         	$this->response['success'] = 'OK';

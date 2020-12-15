@@ -189,11 +189,7 @@ class Admins extends Controller
 	{
 		try
 		{
-			if( ! isset( $_SESSION['adminID'] ) || ! isset( $_SESSION['sessionID'] ) )
-			{
-				$this->view('login/admin');
-				return;
-			}
+			
 
 			$admin = $this->model('Admin');
 
@@ -374,10 +370,10 @@ class Admins extends Controller
 
             $job->setDBInstance($this->getDBInstance() );
             
-            $admin->setID($admin->getID());
+            $job->setOwnerID($job->getOwnerID());
 
             $search = $job->searchJob($admin);
-            
+
             if( !empty($search) )
             {
                 
@@ -407,9 +403,229 @@ class Admins extends Controller
             }
 
 		} 
-		catch (Exception $e)
+		catch( CustomException $e )
+        {
+            $this->response['success'] = false;
+
+            $this->response['error']['message'] = $e->getMessage();
+
+            $this->response['error']['title'] = 'Error';
+
+            echo json_encode( $this->response );
+        }
+        catch( PDOException $e )
+        {
+            $this->response['success'] = false;
+
+            $this->response['error']['message'] = $e->getMessage();
+
+            $this->response['error']['title'] = 'Error';
+
+            echo json_encode( $this->response );
+                 
+        }
+        catch (Exception $e) 
+        {
+            $this->response['success'] = false;
+
+            $this->response['error']['message'] = $e->getMessage();
+
+            $this->response['error']['title'] = 'Error';
+
+            echo json_encode( $this->response );
+        }
+        catch (Error $e) 
+        {
+            $this->response['success'] = false;
+
+            $this->response['error']['message'] = $e->getMessage();
+
+            $this->response['error']['title'] = 'Error';
+
+            echo json_encode( $this->response );
+        }
+	}
+
+	public function updateJob()
+	{
+		try 
 		{
+			$jobTitle = $deviceName = $deviceDescription = $deviceID = $fault = 
+			$balance = $id = $jobPrice = $pricePaid = "";
+
+    		if( ! isset($_POST['update_job']) )
+    			throw new CustomException("Ensure to use the Submit button");
+        
+			if( $_SERVER["REQUEST_METHOD"] != "POST" )
+                throw new CustomException("Error Processing Request", 1);
+
+            if( isset($_POST['job-title'] ) )
+    		{
+        		$jobTitle = trim( $_POST['job-title'] );
+    		}
+    		
+            if( '' == $jobTitle )
+            	throw new CustomException("enter the job title");
+
+    		if(isset($_POST['device-name']))
+    		{
+        		$deviceName = trim( $_POST['device-name'] );
+    		}
+    		
+            if( '' == $deviceName )
+            	throw new CustomException("enter device name");
+
+            if(isset($_POST['id']))
+    		{
+        		$id = trim( $_POST['id'] );
+    		}
+    		
+            if( '' == $id )
+            	throw new CustomException("id not found");
+
+
+            if( isset( $_POST['device-description'] ) )
+    		{
+        		$deviceDescription = trim( $_POST['device-description'] );
+    		}
+    		
+            if( '' == $deviceDescription )
+            	throw new CustomException("enter device description");
+
+            if(isset($_POST['device-id']))
+    		{
+        		$deviceID = trim( $_POST['device-id'] );
+    		}
+
+            if( '' == $deviceID )
+            	throw new CustomException("enter device id");
+                    		
+            if(isset($_POST['fault']))
+    		{
+        		$fault = trim( $_POST['fault'] );
+    		}
+
+            if( '' == $fault )
+    			throw new CustomException("enter what's wrong with the device");
+
+    		if(isset($_POST['actualPrice']))
+    		{
+        		$jobPrice = trim( $_POST['actualPrice'] );
+    		}
+
+            if( '' == $jobPrice )
+    			throw new CustomException("enter Job's price");
+
+    		if(isset($_POST['amountPaid']))
+    		{
+        		$pricePaid = trim( $_POST['amountPaid'] );
+    		}
+
+            if( '' == $pricePaid )
+    			throw new CustomException("enter Amount Paid");
+
+    		if(isset($_POST['balance']))
+    		{
+        		$balance = trim( $_POST['balance'] );
+    		}
+
+            if( '' == $balance )
+    			throw new CustomException("enter customer's balance");
+
+            $admin = $this->model('Admin');
+
+            $job = $this->model('Job');    
+                        
+    		$admin->setDBInstance( $this->getDBInstance() );
+
+    		$job->setDBInstance( $this->getDBInstance() );
+
+    		$admin->setID( $admin->getID() );
+
+			$job->setJobID($id);
 			
-		}
+    		$job->setTitle($jobTitle);
+
+            $job->setDeviceName($deviceName);
+
+    		$job->setDeviceDescription($deviceDescription);
+
+    		$job->setDeviceID($deviceID);
+
+    		$job->setFault($fault);
+
+    		$job->setActualPrice($jobPrice);
+
+    		$job->setAmountPaid($pricePaid);
+
+			$job->setBalance($balance);
+
+    		if( $admin->updateJob($job) )
+            {
+               	$success['message'] = 'Jobs successfully updated';
+
+                $success['title'] =  'Success';
+
+                $this->response['success'] = $success;
+
+                $this->response['error'] = false;
+
+                echo  json_encode( $this->response );    
+            }
+            else
+            {
+                $error['message'] = 'Update unsuccessful';
+
+                $error['title'] = 'Error';
+
+                $this->response['dashboard'] = 'Admins';
+
+                $this->response['success'] = false;
+
+                $this->response['error'] = $error;
+
+                echo  json_encode( $this->response );       
+            }
+        } 
+		catch( CustomException $e )
+        {
+            $this->response['success'] = false;
+
+            $this->response['error']['message'] = $e->getMessage();
+
+            $this->response['error']['title'] = 'Error';
+
+            echo json_encode( $this->response );
+        }
+        catch( PDOException $e )
+        {
+            $this->response['success'] = false;
+
+            $this->response['error']['message'] = $e->getMessage();
+
+            $this->response['error']['title'] = 'Error';
+
+            echo json_encode( $this->response );
+        }
+        catch (Exception $e) 
+        {
+            $this->response['success'] = false;
+
+            $this->response['error']['message'] = $e->getMessage();
+
+            $this->response['error']['title'] = 'Error';
+
+            echo json_encode( $this->response );
+        }
+        catch (Error $e) 
+        {
+            $this->response['success'] = false;
+
+            $this->response['error']['message'] = $e->getMessage();
+
+            $this->response['error']['title'] = 'Error';
+
+            echo json_encode( $this->response );
+        }
 	}
 }
