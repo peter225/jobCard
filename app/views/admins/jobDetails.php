@@ -195,19 +195,23 @@ $admin = $data['admin'];
                 <div class="card-body">
 
                     
-                   <label for="basicinput">Search Customer's Job</label> 
-                  
-                  <div class="input-group">
+            <label for="basicinput">Search Customer's Job</label> 
+            <div class="card collapsed-card">
+              <div class="card-header">
+                <h3 class="card-title"></h3>
+                  <div class="card-tools input-group">
                     <!--<label for="basicinput">Search Customer</label>-->
                     
                     <input type="text" name="customer_id" class="form-control" id="customer_id" placeholder="search customer's id">
-                    <button type="button" class="btn btn-success btn-flat" id="customerIdBtn" data-toggle="display" data-target="#displayJob" name="customerIdBtn"> 
+                    <button type="button" class="btn btn-success btn-flat" id="customerIdBtn" data-card-target="#displayJob" name="customerIdBtn"> 
                       search
                     </button>
                     
                   </div>
+              </div>
+            </div>
                   
-                  <div class="display" id="displayJob">
+            <div class="card-body" id="displayJob">
                     
                   </div>
                   

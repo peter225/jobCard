@@ -300,7 +300,7 @@ $admin = $data['admin'];
 
 <!-- AdminLTE for demo purposes -->
 <script src="assets/plugins/AdminLTE-master1/dist/js/demo.js"></script>
-<script type="text/javascript" src="assets/js/dashboard.js"></script>
+
 
 </body>
 </html>

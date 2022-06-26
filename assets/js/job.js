@@ -165,11 +165,11 @@ $(document).ready(function(){
       });
   });
  
-var sendJobDetails = function(ownerName, ownerPhone, jobTitle, deviceName,deviceDescription,deviceID, fault, jobPrice, pricePaid, customerId, callback ){
+var sendJobDetails = function(ownerName, ownerPhone, jobTitle, deviceName,deviceDescription,deviceID, fault, status, jobPrice, pricePaid, balance, customerId, callback ){
   $.ajax({
           type:"POST", 
           url:"/task/createJob",
-          data:"owner-name=" + ownerName + "&owner-phone=" + ownerPhone + "&job-title=" + jobTitle + "&device-name=" + deviceName + "&device-description=" + deviceDescription + "&device-id=" + deviceID + "&fault=" + fault + "&actualPrice=" + jobPrice + "&pricePaid=" + pricePaid + "&customerId=" + customerId + "&create_job=true",
+          data:"owner-name=" + ownerName + "&owner-phone=" + ownerPhone + "&job-title=" + jobTitle + "&device-name=" + deviceName + "&device-description=" + deviceDescription + "&device-id=" + deviceID + "&fault=" + fault + "&status=" + status + "&balance=" + balance + "&actualPrice=" + jobPrice + "&pricePaid=" + pricePaid + "&customerId=" + customerId + "&create_job=true",
           dataType:"json",
           encode:true
         })
@@ -193,9 +193,13 @@ $("#create_job").on('click', function(event){
 
   var customerId =  $('input[name=owner-name]', form ).data('customer-id');
 
+  var status = $('input[name=status]', form).val();
+
   console.log(customerId);
 
-  sendJobDetails($("#owner-name").val(), $("#owner-phone").val(), $("#job-title").val(), $("#device-name").val(),$("#device-description").val(),$("#device-id").val(),$("#fault").val(),$("#actualPrice").val(),$("#pricePaid").val(), customerId, function(response){
+  console.log(status);
+
+  sendJobDetails($("#owner-name").val(), $("#owner-phone").val(), $("#job-title").val(), $("#device-name").val(),$("#device-description").val(),$("#device-id").val(),$("#fault").val(), status , $("#balance").val(), $("#actualPrice").val(),$("#pricePaid").val(), customerId, function(response){
     
     if(response.success)
     {

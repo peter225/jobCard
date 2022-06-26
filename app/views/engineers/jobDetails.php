@@ -37,6 +37,12 @@ $engineer = $data['engineer'];
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
+
+
+  
+
+  
+
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-light">
     <!-- Left navbar links -->
@@ -231,6 +237,29 @@ $engineer = $data['engineer'];
 <script src="../../assets/plugins/AdminLTE-master1/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="../../assets/plugins/AdminLTE-master1/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="../../assets/plugins/AdminLTE-master1/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+<!-- ChartJS -->
+<script src="../../assets/plugins/AdminLTE-master1/plugins/chart.js/Chart.min.js"></script>
+
+<script src="../../assets/plugins/AdminLTE-master1/plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="../../assets/plugins/AdminLTE-master1/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="../../assets/plugins/AdminLTE-master1/plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="../../assets/plugins/AdminLTE-master1/plugins/moment/moment.min.js"></script>
+<script src="../../assets/plugins/AdminLTE-master1/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="../../assets/plugins/AdminLTE-master1/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="../../assets/plugins/AdminLTE-master1/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="../../assets/plugins/AdminLTE-master1/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../assets/plugins/AdminLTE-master1/dist/js/adminlte.js"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script src="../../assets/plugins/AdminLTE-master1/dist/js/demo.js"></script>
+
 
 </body>
 </html>

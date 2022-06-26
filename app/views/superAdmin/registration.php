@@ -198,7 +198,7 @@ $superAdmin = $data['superAdmin'];
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form role="form" id="customer-data-form">
+              <form role="form" id="admin-data-form">
                 <div class="card-body">
                   <div class="form-group">
                     <label for="basicinput">First name</label>
@@ -231,7 +231,7 @@ $superAdmin = $data['superAdmin'];
                   <div class="form-group mb-0">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" name="terms" class="custom-control-input" id="exampleCheck1">
-                      <label class="custom-control-label" for="exampleCheck1">I agree to the <a href="#">terms of service</a>.</label>
+                  
                     </div>
                   </div>
                 </div>
@@ -284,7 +284,7 @@ $superAdmin = $data['superAdmin'];
 <script src="../../assets/plugins/AdminLTE-master1/dist/js/adminlte.js"></script>
 
 
-<script type="text/javascript" src="/assets/js/"></script>
+<script type="text/javascript" src="/assets/js/registerAdmin.js"></script>
 </body>
 </html>
                                                 

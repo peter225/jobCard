@@ -106,7 +106,7 @@ class Task extends Controller
 		try 
 		{
 
-			$jobTitle = $deviceName = $deviceDescription = $deviceID = $fault = $role= $ownerName = $ownerPhone = $customerId = $jobPrice = $pricePaid = "";
+			$jobTitle = $deviceName = $deviceDescription = $deviceID = $fault = $role= $ownerName = $ownerPhone = $customerId = $status = $balance = $jobPrice = $pricePaid = "";
 
     		if( ! isset($_POST['create_job']) )
     			throw new CustomException("Ensure to use the Submit button");
@@ -138,6 +138,14 @@ class Task extends Controller
     		
             if( '' == $customerId )
             	throw new CustomException("customer id not found");
+
+            if(isset($_POST['status']))
+            {
+                $status = trim( $_POST['status'] );
+            }
+            
+            if( '' == $status )
+                throw new CustomException("status not found");
 
 
             if( isset( $_POST['device-description'] ) )
@@ -197,6 +205,14 @@ class Task extends Controller
             if( '' == $pricePaid )
     			throw new CustomException("enter Amount Paid");
 
+            if(isset($_POST['balance']))
+            {
+                $balance = trim( $_POST['balance'] );
+            }
+
+            if( '' == $balance )
+                throw new CustomException("enter customer's balance");
+
 
 
             $admin = $this->model('Admin');
@@ -221,11 +237,15 @@ class Task extends Controller
 
     		$job->setDeviceID($deviceID);
 
+            $job->setStatus($status);
+
     		$job->setFault($fault);
 
     		$job->setActualPrice($jobPrice);
 
     		$job->setAmountPaid($pricePaid);
+
+            $job->setBalance($balance);
 
             $admin->setSessionID( $_SESSION['sessionID'] );
             

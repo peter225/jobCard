@@ -71,7 +71,7 @@ class Job
     {
         try
         {
-             if(isset($_POST['search-btn']))
+               if(isset($_POST['search-btn']))
              {
                 $lastName = trim($_POST['lastname']);
 

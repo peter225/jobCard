@@ -54,7 +54,9 @@ class Admin extends Person
                                           device_name = :deviceName, 
                                           device_description = :deviceDescription, 
                                           device_id = :deviceID, 
-                                          fault = :Fault, 
+                                          fault = :Fault,
+                                          status = :status,
+                                          balance = :balance, 
                                           owner_name = :ownerName, 
                                           owner_phone = :ownerPhone,
                                           customer_id = :customerId,
@@ -69,7 +71,9 @@ class Admin extends Person
                                     ':deviceName'=>$job->getDeviceName(), 
                                     ':deviceDescription'=>$job->getDeviceDescription(), 
                                     ':deviceID'=>$job->getDeviceID(), 
-                                    ':Fault' => $job->getFault(),  
+                                    ':Fault' => $job->getFault(),
+                                    ':status' => $job->getStatus(), 
+                                    ':balance' => $job->getBalance(), 
                                     ':ownerName'=>$job->getOwnerName(), 
                                     ':ownerPhone'=>$job->getOwnerPhone(),
                                     ':customerId'=>$job->getOwnerID(),
@@ -213,22 +217,18 @@ class Admin extends Person
         catch (PDOException $e) 
         {
            throw new PDOException($e->getMessage() );
-             
         }
         catch (CustomException $e) 
         {
            throw new CustomException( $e->getMessage() );
-             
         }
         catch ( Exception $e) 
         {
            throw new Exception($e->getMessage() );
-             
         }
         catch ( Error $e) 
         {
            throw new Error($e->getMessage() );
-             
         }
     }
 

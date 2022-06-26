@@ -1,107 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edmin :: Admin Login</title>
-    <link type="text/css" href="assets/plugins/edmin/code/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link type="text/css" href="assets/plugins/edmin/code/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link type="text/css" href="assets/plugins/edmin/code/css/theme.css" rel="stylesheet">
-    
-    <link type="text/css" href="assets/plugins/edmin/code/images/icons/css/font-awesome.css" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AdminLTE 3 | Log in</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/assets/plugins/AdminLTE-master1/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="/assets/plugins/AdminLTE-master1/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/assets/plugins/AdminLTE-master1/dist/css/adminlte.min.css">
 
-    <link type="text/css" href='/assets/plugins/toastr/css/toastr.css' rel='stylesheet'>
+  <link type="text/css" href='/assets/plugins/toastr/css/toastr.css' rel='stylesheet'>
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body>
-    <div id="responseBox"></div>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="#"><b>JobCard Admin</b>LTE</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">Sign in to start your session</p>
 
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                    <i class="icon-reorder shaded"></i>
-                </a>
-
-                <a class="brand" href="#">
-                    JobCard Admin Login
-                </a>
-
-                <div class="nav-collapse collapse navbar-inverse-collapse">
-                
-                    <ul class="nav pull-right">
-
-                        <li><a href="#">
-                            Sign Up
-                        </a></li>
-
-                        
-
-                        <li><a href="#">
-                            Forgot your password?
-                        </a></li>
-                    </ul>
-                </div><!-- /.nav-collapse -->
+      <form>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Username" id="username" name="username">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
             </div>
-        </div><!-- /navbar-inner -->
-    </div><!-- /navbar -->
-
-
-
-    <div class="wrapper">
-        <div class="container">
-            <div class="row">
-                <div class="module module-login span4 offset4">
-                    <form class="form-vertical">
-                        <div class="module-head">
-                            <h3>Sign In</h3>
-                        </div>
-                        <div class="module-body">
-                            <div class="control-group">
-                                <div class="controls row-fluid">
-                                    <input class="span12" type="text" id="username" placeholder="Enter Username"name="username">
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <div class="controls row-fluid">
-                                    <input class="span12" type="password"  id="psw" placeholder=" Enter Password" name="psw">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="module-foot">
-                            <div class="control-group">
-                                <div class="controls clearfix">
-                                    <button type="button" class="btn btn-primary pull-right" id="login-btn" name="Admin">Login</button>
-                                    <label class="checkbox">
-                                        <input type="checkbox"> Remember me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" placeholder="Password" id="psw" name="psw">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
             </div>
+          </div>
         </div>
-    </div><!--/.wrapper-->
 
-    <div class="footer">
-        <div class="container">
-             
-
-            <b class="copyright">&copy; 2020 JobCard Computer-ICE Africa.com </b> All rights reserved.
-        </div>
+        
+          
+          <div class="row">
+            
+            <div class="col-4" >
+              <button type="button" class="btn btn-primary btn-block"id="login-btn" name="Admin">Sign In</button>
+            </div>
+          </div>
+      </form>
+      
+      
+      <p class="mb-0">
+        <a href="login/forgetPassword">I forgot my password</a>
+      </p>
+      
     </div>
-
-    <script src="assets/plugins/edmin/code/scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
-
-    <script src="assets/plugins/edmin/code/scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
     
-    <script src="assets/plugins/edmin/code/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+  </div>
+</div>
 
-    <script src="assets/plugins/toastr/javascript/toastr.min.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/assets/js/login.js"></script>
+<!-- jQuery -->
+<script src="/assets/plugins/AdminLTE-master1/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/assets/plugins/AdminLTE-master1/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/assets/plugins/AdminLTE-master1/dist/js/adminlte.min.js"></script>
+<script src="/assets/plugins/toastr/javascript/toastr.min.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="/assets/js/login.js"></script>
+
 </body>
 </html>
-

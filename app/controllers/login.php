@@ -21,8 +21,9 @@ class Login extends Controller
 
     		if( ! isset($_POST['submit-btn']) )
         	throw new CustomException("Ensure to use the login button");
-            
-			if( $_SERVER["REQUEST_METHOD"] != "POST" )
+
+
+            if( $_SERVER["REQUEST_METHOD"] != "POST" )
         	throw new CustomException("Error Processing Request", 1);
         
     		if(isset($_POST['username']))
@@ -140,4 +141,44 @@ class Login extends Controller
             echo json_encode( $this->response );
         }
 	}
+
+    public function forgetPassword()
+    {
+        try
+        {
+            if( ! isset( $_SESSION['adminID'] ) || ! isset( $_SESSION['sessionID'] ) )
+            {
+                $this->view('login/admin');
+                return;
+            }
+
+            $admin = $this->model('Admin');
+
+            $admin->setUserName( $_SESSION['adminID'] );
+
+            $admin->setDBInstance( $this->getDBInstance() );
+
+            $admin->loadProfile();
+
+            if( $admin->getSessionID() != $_SESSION['sessionID'] )
+            {
+                $this->view('login/admin');
+                return;
+            }
+
+            $this->view('login/forgetPassword', ['admin'=>$admin]);
+        }
+        catch (Exception $e) 
+        {
+            $e->getMessage();
+        }
+        catch (CustomException $e) 
+        {
+            $e->getMessage();
+        }
+        catch (Error $e) 
+        {
+            $e->getMessage();
+        }
+    }
 }

@@ -115,7 +115,7 @@ class registerCustomers extends Controller
 
     		$admin->setDob( $dob );
 
-            $admin->setSessionID( $_SESSION['sessionID'] );
+            //$admin->setSessionID( $_SESSION['sessionID'] );
             
             
 
@@ -135,7 +135,7 @@ class registerCustomers extends Controller
             }
             else
             {
-                $error['message'] = 'Job details not successfully saved.';
+                $error['message'] = 'Customers not successfully registered';
 
                 $error['title'] = 'Error';
 

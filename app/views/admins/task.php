@@ -241,6 +241,18 @@ $admin = $data['admin'];
                     <label for="exampleInputPassword1">Amount Paid</label>
                     <input type="text" name="pricePaid" class="form-control" id="pricePaid" placeholder="Enter Amount Paid"></input>
                   </div>
+
+                  <div class="form-group">
+                    <label for="basicinput">Balance</label>
+                      <input type="text" name="balance" id="balance"class="form-control" placeholder="enter balance">
+                  </div>
+
+                  <div class="form-group"> 
+                    <label for="inputStatus">Status</label> 
+                      <input disabled type="text" name="status" class="form-control" id="status" value="pending">
+                        
+                      </input>
+                  </div>
                   
                   <div class="form-group">
                     <label for="exampleInputPassword1">Faults/Complaints</label>

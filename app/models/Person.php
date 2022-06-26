@@ -232,55 +232,7 @@ class Person
         }
     }
 
-    public function loadProfile()   
-    {
-        try
-        {
-            $sql = '';
-
-            if( $this instanceof Customer )
-                $sql = 'SELECT * FROM customer WHERE username = :userName';
-            else if( $this instanceof Admin )
-                $sql = 'SELECT * FROM admin WHERE username = :userName';
-            else if( $this instanceof superAdmin )
-                $sql = 'SELECT * FROM superadmin WHERE username = :userName';
-            else if( $this instanceof engineer )
-                $sql = 'SELECT * FROM engineer WHERE username = :userName';
-
-            if( '' == $sql )
-                throw new CustomException("Unrecognised role");
-                
-            $stmt = $this->dbInstance->prepare( $sql );
-
-            $stmt->execute( array(':userName'=>$this->userName ) );
-
-            $row = $stmt->fetch( PDO::FETCH_ASSOC );
-
-            //$this->id = $row['id'];
-            $this->firstName = $row['firstname'];
-            $this->lastName = $row['lastname'];
-            $this->email = $row['email'];
-            $this->gender = $row['gender'];
-            $this->sessionID = $row['session_id'];
-            //$this->dob = $row['dob'];
-
-        }
-        catch (PDOException $e) 
-        {
-           throw new PDOException($e->getMessage() );
-             
-        }
-        catch (CustomException $e) 
-        {
-           throw new CustomException( $e->getMessage() );
-             
-        }
-        catch ( Exception $e) 
-        {
-           throw new Exception($e->getMessage() );
-             
-        }
-    }
+   
     
     public function verifyPassword( $pWord )
     {
@@ -311,6 +263,7 @@ class Person
 
             $passwordHash = $row['password'];
 //var_dump($passwordHash);
+//throw new CustomException($passwordHash);
 
             //throw new CustomException( $passwordHash );
             return(password_verify($pWord, $passwordHash ));
