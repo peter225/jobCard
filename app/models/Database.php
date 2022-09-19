@@ -2,10 +2,10 @@
 
 class Database extends PDO
 {
-	private $servername = "localhost";
-	private $username = "root";
-	private $password = "";
-	private $dbname = 'jobcard';
+	private $servername = "peter-tech.mysql.database.azure.com";
+	private $username = "peter225";
+	private $password = "Adeyemo_azure1";
+	private $dbname = 'peter-tech';
 	private $dsn;
 
 	public function __construct()
