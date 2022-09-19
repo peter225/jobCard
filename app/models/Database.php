@@ -2,12 +2,10 @@
 
 class Database extends PDO
 {
-	
-	private $servername = getenv('DB_HOST');
-	private $username = getenv('DB_USERNAME');
-	private $password = getenv('DB_PASSWORD');
-	private $dbname = getenv('DB_DATABASE');
-	private $sslcert    = "ssl/DigiCertGlobalRootCA.crt.pem";
+	private $servername = "localhost";
+	private $username = "root";
+	private $password = "";
+	private $dbname = 'jobcard';
 	private $dsn;
 
 	public function __construct()
