@@ -136,6 +136,8 @@ ini_set('session.gc_maxlifetime', 24*60*60 );
 
 //session_save_path( 'app/sessions' );
 
+
+
 ini_set('session.gc_probability', 1 );
 
 ini_set( 'session.gc_divisor', 100 );
