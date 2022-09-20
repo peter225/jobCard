@@ -14,7 +14,7 @@ session_set_cookie_params( 24*60*60 );
 
 session_start();
 
-ini_set('date.timezone', 'Africa/Lagos');
+//ini_set('date.timezone', 'Africa/Lagos');
 
 require_once 'app/main/app.php';
 
