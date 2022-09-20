@@ -79,7 +79,7 @@
 
         //submitButton.setAttribute('disabled', true);
         loginUser( userName, password, role, function( response ){
-//console.log(response);
+console.log(response);
           toastr.clear();
 
           if( ! response.success )
@@ -94,7 +94,7 @@
 
               toastr['success']('Redirecting...please wait', 'Success');
 
-              window.location  = response.dashboard;
+              //window.location  = response.dashboard;
           }
         });
     });
