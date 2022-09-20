@@ -85,7 +85,7 @@ class Login extends Controller
             {
                 $_SESSION['adminID'] = $user->getUserName();
                 var_dump($_SESSION['adminID']);
-                //$this->response['dashboard'] = 'Admins';            	
+                $this->response['dashboard'] = 'Admins';            	
             }
             else if( $user instanceof superAdmin )
             {
